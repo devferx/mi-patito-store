@@ -31,6 +31,7 @@ const findDuckByAttributes = async (
       color,
       size,
       price,
+      isDeleted: false,
     },
   })
 
@@ -71,7 +72,10 @@ export const createDuck = async (duck: any) => {
 
 export const updateDuck = async (id: number, duck: any) => {
   const updatedDuck = await orm.duck.update({
-    where: { id },
+    where: {
+      id,
+      isDeleted: false,
+    },
     data: duck,
   })
 
@@ -85,6 +89,4 @@ export const deleteDuck = async (id: number) => {
     },
     where: { id },
   })
-
-  return deletedDuck
 }

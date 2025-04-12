@@ -44,11 +44,13 @@ export const updateDuck = async (req: Request, res: Response) => {
 export const deleteDuck = async (req: Request, res: Response) => {
   const { id } = req.params
 
-  const deletedDuck = await ducksService.deleteDuck(Number(id))
+  await ducksService.deleteDuck(Number(id))
 
   res.json({
     ok: true,
     message: `Deleted duck with id ${id}`,
-    data: deletedDuck,
+    data: {
+      id,
+    },
   })
 }
