@@ -8,7 +8,7 @@ export const getDucks = (req: Request, res: Response) => {
 }
 
 export const createDuck = (req: Request, res: Response) => {
-  res.json({
+  res.status(201).json({
     message: 'Create a new duck',
     data: req.body,
   })
