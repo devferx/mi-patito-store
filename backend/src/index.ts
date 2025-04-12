@@ -2,13 +2,27 @@ import express from 'express'
 
 import duckRoutes from './routes/ducks.routes'
 
-const app = express()
-const port = process.env.PORT || 3005
+import { orm } from './lib/prisma'
 
-app.use(express.json())
+async function main() {
+  const app = express()
+  const port = process.env.PORT || 3005
 
-app.use('/api/ducks', duckRoutes)
+  app.use(express.json())
 
-app.listen(port, () => {
-  console.log(`🚀 Server running at http://localhost:${port}`)
-})
+  app.use('/api/ducks', duckRoutes)
+
+  app.listen(port, () => {
+    console.log(`🚀 Server running at http://localhost:${port}`)
+  })
+}
+
+main()
+  .then(async () => {
+    await orm.$disconnect()
+  })
+  .catch(async (e) => {
+    console.error(e)
+    await orm.$disconnect()
+    process.exit(1)
+  })

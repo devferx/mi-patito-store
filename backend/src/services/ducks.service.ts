@@ -1,0 +1,36 @@
+import { orm } from '../lib/prisma'
+
+export const getAllDucks = async () => {
+  const ducks = await orm.duck.findMany()
+  return ducks
+}
+
+export const createDuck = async (duck: any) => {
+  const createdDuck = await orm.duck.create({
+    data: {
+      color: duck.color,
+      size: duck.size,
+      price: duck.price,
+      quantity: duck.quantity,
+    },
+  })
+
+  return createdDuck
+}
+
+export const updateDuck = async (id: number, duck: any) => {
+  const updatedDuck = await orm.duck.update({
+    where: { id },
+    data: duck,
+  })
+
+  return updatedDuck
+}
+
+export const deleteDuck = async (id: number) => {
+  const deletedDuck = await orm.duck.delete({
+    where: { id },
+  })
+
+  return deletedDuck
+}
