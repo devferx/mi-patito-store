@@ -1,4 +1,5 @@
 import express from 'express'
+import cors from 'cors'
 
 import duckRoutes from './routes/ducks.routes'
 
@@ -9,6 +10,7 @@ async function main() {
   const port = process.env.PORT || 3005
 
   app.use(express.json())
+  app.use(cors())
 
   app.use('/api/ducks', duckRoutes)
 
