@@ -12,7 +12,7 @@ enum DuckColor {
   Red
   Green
   Yellow
-  Blue
+  Black
 }
 
 enum DuckSize {
