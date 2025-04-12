@@ -1,0 +1,35 @@
+generator client {
+  provider = "prisma-client-js"
+  // output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum Color {
+  Red
+  Green
+  Yellow
+  Blue
+}
+
+enum Size {
+  XLarge
+  Large
+  Medium
+  Small
+  XSmall
+}
+
+model Duck {
+  id        Int      @id @default(autoincrement())
+  color     Color
+  size      Size
+  price     Float
+  quantity  Int      @default(0)
+  isDeleted Boolean  @default(false) @map("is_deleted")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+}
