@@ -3,10 +3,21 @@ import { orm } from '../lib/prisma'
 
 export const getAllDucks = async () => {
   const ducks = await orm.duck.findMany({
+    select: {
+      id: true,
+      color: true,
+      size: true,
+      price: true,
+      quantity: true,
+    },
+    where: {
+      isDeleted: false,
+    },
     orderBy: {
       quantity: 'desc',
     },
   })
+
   return ducks
 }
 
@@ -68,7 +79,10 @@ export const updateDuck = async (id: number, duck: any) => {
 }
 
 export const deleteDuck = async (id: number) => {
-  const deletedDuck = await orm.duck.delete({
+  const deletedDuck = await orm.duck.update({
+    data: {
+      isDeleted: true,
+    },
     where: { id },
   })
 
