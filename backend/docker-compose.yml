@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mi-patito-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: patito123
+      MYSQL_DATABASE: duck_store_db
+      MYSQL_USER: duck_user
+      MYSQL_PASSWORD: duck_password
+      MYSQL_ROOT_HOST: '%'
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:
