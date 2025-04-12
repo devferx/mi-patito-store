@@ -2,7 +2,11 @@ import { DuckColor, DuckSize } from '@prisma/client'
 import { orm } from '../lib/prisma'
 
 export const getAllDucks = async () => {
-  const ducks = await orm.duck.findMany()
+  const ducks = await orm.duck.findMany({
+    orderBy: {
+      quantity: 'desc',
+    },
+  })
   return ducks
 }
 
