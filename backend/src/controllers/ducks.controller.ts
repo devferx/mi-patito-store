@@ -36,7 +36,7 @@ export const updateDuck = async (req: Request, res: Response) => {
 
   res.json({
     ok: true,
-    message: `Updated duck with id ${id}`,
+    message: `Updated duck`,
     data: updatedDuck,
   })
 }
@@ -48,9 +48,9 @@ export const deleteDuck = async (req: Request, res: Response) => {
 
   res.json({
     ok: true,
-    message: `Deleted duck with id ${id}`,
+    message: `Deleted duck`,
     data: {
-      id,
+      id: Number(id),
     },
   })
 }
