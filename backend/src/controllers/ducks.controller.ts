@@ -6,7 +6,7 @@ export const getDucks = async (req: Request, res: Response) => {
   const ducks = await ducksService.getAllDucks()
   res.json({
     ok: true,
-    message: 'Get all ducks',
+    message: 'Retrieved all ducks',
     data: ducks,
   })
 }
@@ -36,7 +36,7 @@ export const updateDuck = async (req: Request, res: Response) => {
 
   res.json({
     ok: true,
-    message: `Update duck with id ${id}`,
+    message: `Updated duck with id ${id}`,
     data: updatedDuck,
   })
 }
@@ -48,7 +48,7 @@ export const deleteDuck = async (req: Request, res: Response) => {
 
   res.json({
     ok: true,
-    message: `Delete duck with id ${id}`,
+    message: `Deleted duck with id ${id}`,
     data: deletedDuck,
   })
 }
