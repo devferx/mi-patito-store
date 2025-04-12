@@ -1,16 +1,9 @@
-import { useState } from 'react'
-
 export const App = () => {
-  const [count, setCount] = useState(0)
-
   return (
-    <div className="card">
-      <button onClick={() => setCount((count) => count + 1)}>
-        count is {count}
-      </button>
-      <p>
-        Edit <code>src/App.tsx</code> and save to test HMR
-      </p>
-    </div>
+    <main>
+      <section className="container mx-auto py-20">
+        <h2 className="text-center text-3xl font-bold">Almacen de Patitos</h2>
+      </section>
+    </main>
   )
 }
