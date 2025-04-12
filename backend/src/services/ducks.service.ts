@@ -1,3 +1,4 @@
+import { DuckColor, DuckSize } from '@prisma/client'
 import { orm } from '../lib/prisma'
 
 export const getAllDucks = async () => {
@@ -5,7 +6,42 @@ export const getAllDucks = async () => {
   return ducks
 }
 
+const findDuckByAttributes = async (
+  color: DuckColor,
+  size: DuckSize,
+  price: number,
+) => {
+  const duck = await orm.duck.findFirst({
+    where: {
+      color,
+      size,
+      price,
+    },
+  })
+
+  return duck
+}
+
 export const createDuck = async (duck: any) => {
+  const existingDuck = await findDuckByAttributes(
+    duck.color,
+    duck.size,
+    duck.price,
+  )
+
+  // If duck exists, update the quantity
+  if (existingDuck) {
+    const updatedDuck = await orm.duck.update({
+      where: { id: existingDuck.id },
+      data: {
+        quantity: existingDuck.quantity + duck.quantity,
+      },
+    })
+
+    return updatedDuck
+  }
+
+  // If duck doesn't exist, create a new one
   const createdDuck = await orm.duck.create({
     data: {
       color: duck.color,

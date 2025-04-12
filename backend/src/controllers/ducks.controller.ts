@@ -16,9 +16,14 @@ export const createDuck = async (req: Request, res: Response) => {
 
   const createdDuck = await ducksService.createDuck(newDuck)
 
+  const message =
+    createdDuck.quantity > newDuck.quantity
+      ? 'Duck already exists, quantity updated'
+      : 'Created a new duck'
+
   res.status(201).json({
     ok: true,
-    message: 'Create a new duck',
+    message,
     data: createdDuck,
   })
 }

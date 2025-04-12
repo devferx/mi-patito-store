@@ -8,14 +8,14 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-enum Color {
+enum DuckColor {
   Red
   Green
   Yellow
   Blue
 }
 
-enum Size {
+enum DuckSize {
   XLarge
   Large
   Medium
@@ -24,12 +24,12 @@ enum Size {
 }
 
 model Duck {
-  id        Int      @id @default(autoincrement())
-  color     Color
-  size      Size
+  id        Int       @id @default(autoincrement())
+  color     DuckColor
+  size      DuckSize
   price     Float
-  quantity  Int      @default(0)
-  isDeleted Boolean  @default(false) @map("is_deleted")
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
+  quantity  Int       @default(0)
+  isDeleted Boolean   @default(false) @map("is_deleted")
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
 }
