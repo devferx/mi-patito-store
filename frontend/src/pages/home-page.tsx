@@ -11,7 +11,7 @@ export const HomePage = () => {
     <main>
       <section className="container mx-auto py-20">
         <h2 className="text-center text-3xl font-bold">Almacen de Patitos</h2>
-        <div className="mx-auto mt-10 max-w-7xl">
+        <div className="mx-auto mt-10 max-w-5xl">
           {data && data.length > 0 && (
             <DucksTable columns={ducksTableColumns} data={data} />
           )}

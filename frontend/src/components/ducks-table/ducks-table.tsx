@@ -14,7 +14,7 @@ import {
   TableRow,
 } from '@/components/ui/table'
 
-interface DucksTableProps<TData, TValue> {
+interface Props<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
   data: TData[]
 }
@@ -22,7 +22,7 @@ interface DucksTableProps<TData, TValue> {
 export const DucksTable = <TData, TValue>({
   columns,
   data,
-}: DucksTableProps<TData, TValue>) => {
+}: Props<TData, TValue>) => {
   const table = useReactTable({
     data,
     columns,
