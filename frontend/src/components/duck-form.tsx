@@ -9,14 +9,6 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
-import { Input } from '@/components/ui/input'
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select'
 import {
   Form,
   FormControl,
@@ -25,8 +17,20 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form'
-import { duckFormSchema, DuckFormValues } from '@/schemas/duck-form.schema'
-import { DUCK_COLORS, DUCK_COLOR_DETAILS, DUCK_SIZES } from '@/constants/ducks'
+import { Input } from '@/components/ui/input'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
+import { ChevronLeft } from 'lucide-react'
+
+import { DUCK_COLOR_DETAILS, DUCK_COLORS, DUCK_SIZES } from '@/constants/ducks'
+
+import { duckFormSchema, type DuckFormValues } from '@/schemas/duck-form.schema'
+import { useNavigate } from 'react-router'
 
 interface Props {
   isLoading?: boolean
@@ -34,6 +38,8 @@ interface Props {
 }
 
 export const DuckForm = ({ isLoading, onSubmit = () => {} }: Props) => {
+  const navigate = useNavigate()
+
   const form = useForm<DuckFormValues>({
     resolver: zodResolver(duckFormSchema),
     defaultValues: {
@@ -44,13 +50,26 @@ export const DuckForm = ({ isLoading, onSubmit = () => {} }: Props) => {
     },
   })
 
+  const handleBack = () => {
+    navigate(-1)
+  }
+
   const handleSubmit = (data: DuckFormValues) => {
     onSubmit(data)
   }
 
   return (
     <Card className="mx-auto w-[400px]">
-      <CardHeader>
+      <CardHeader className="flex items-center gap-4">
+        <Button
+          className="cursor-pointer"
+          variant="outline"
+          size="icon"
+          onClick={handleBack}
+        >
+          <ChevronLeft />
+        </Button>
+
         <CardTitle className="text-xl">Agregar nuevo patito</CardTitle>
       </CardHeader>
       <CardContent>
