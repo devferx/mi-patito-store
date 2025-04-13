@@ -1,14 +1,13 @@
-import { Button } from './components/ui/button'
+import { QueryClientProvider } from '@tanstack/react-query'
+
+import { queryClient } from './lib/react-query'
+
+import { HomePage } from './pages/home-page'
 
 export const App = () => {
   return (
-    <main>
-      <section className="container mx-auto py-20">
-        <h2 className="text-center text-3xl font-bold">Almacen de Patitos</h2>
-        <div className="mt-5 flex flex-col items-center justify-center">
-          <Button>Click me</Button>
-        </div>
-      </section>
-    </main>
+    <QueryClientProvider client={queryClient}>
+      <HomePage />
+    </QueryClientProvider>
   )
 }
