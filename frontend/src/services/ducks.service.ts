@@ -15,3 +15,7 @@ export const createDuck = async (duck: Omit<Duck, 'id'>): Promise<Duck> => {
   const { data: newDuck } = data
   return newDuck
 }
+
+export const deleteDuck = async (id: string): Promise<void> => {
+  await api.delete(`/ducks/${id}`)
+}
