@@ -1,6 +1,6 @@
 import { ColumnDef } from '@tanstack/react-table'
 
-import { getDuckColorLabel } from '@/utils/get-duck-color-label'
+import { ColorIndicator } from './color-indicator'
 
 import type { Duck } from '@/models/duck'
 
@@ -12,10 +12,7 @@ export const ducksTableColumns: ColumnDef<Duck>[] = [
   {
     accessorKey: 'color',
     header: 'Color',
-    cell: ({ row }) => {
-      const duck = row.original
-      return getDuckColorLabel(duck.color)
-    },
+    cell: ({ row }) => <ColorIndicator duckColor={row.original.color} />,
   },
   {
     accessorKey: 'size',
