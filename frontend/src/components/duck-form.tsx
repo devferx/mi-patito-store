@@ -28,7 +28,12 @@ import {
 import { duckFormSchema, DuckFormValues } from '@/schemas/duck-form.schema'
 import { DUCK_COLORS, DUCK_COLOR_DETAILS, DUCK_SIZES } from '@/constants/ducks'
 
-export const DuckForm = () => {
+interface Props {
+  isLoading?: boolean
+  onSubmit?: (values: DuckFormValues) => void
+}
+
+export const DuckForm = ({ isLoading, onSubmit = () => {} }: Props) => {
   const form = useForm<DuckFormValues>({
     resolver: zodResolver(duckFormSchema),
     defaultValues: {
@@ -39,8 +44,8 @@ export const DuckForm = () => {
     },
   })
 
-  function onSubmit(values: DuckFormValues) {
-    console.log(values)
+  const handleSubmit = (data: DuckFormValues) => {
+    onSubmit(data)
   }
 
   return (
@@ -51,8 +56,8 @@ export const DuckForm = () => {
       <CardContent>
         <Form {...form}>
           <form
-            onSubmit={form.handleSubmit(onSubmit)}
             className="grid w-full items-center gap-4"
+            onSubmit={form.handleSubmit(handleSubmit)}
           >
             <FormField
               control={form.control}
@@ -144,7 +149,9 @@ export const DuckForm = () => {
             />
 
             <CardFooter className="flex justify-end px-0 pb-0">
-              <Button type="submit">Agregar</Button>
+              <Button type="submit" disabled={isLoading}>
+                Agregar
+              </Button>
             </CardFooter>
           </form>
         </Form>
