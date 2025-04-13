@@ -1,5 +1,8 @@
 import { useDucks } from '@/hooks/use-ducks'
 
+import { ducksTableColumns } from '@/components/ducks-table/ducks-table-columns'
+import { DucksTable } from '@/components/ducks-table/ducks-table'
+
 export const HomePage = () => {
   const { getDucksQuery } = useDucks()
   const { data } = getDucksQuery
@@ -8,9 +11,9 @@ export const HomePage = () => {
     <main>
       <section className="container mx-auto py-20">
         <h2 className="text-center text-3xl font-bold">Almacen de Patitos</h2>
-        <pre>
-          <code>{JSON.stringify(data, null, 2)}</code>
-        </pre>
+        {data && data.length > 0 && (
+          <DucksTable columns={ducksTableColumns} data={data} />
+        )}
       </section>
     </main>
   )
