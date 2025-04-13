@@ -1,5 +1,7 @@
-import { zodResolver } from '@hookform/resolvers/zod'
+import { useNavigate } from 'react-router'
 import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { ChevronLeft } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
 import {
@@ -25,28 +27,35 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { ChevronLeft } from 'lucide-react'
 
 import { DUCK_COLOR_DETAILS, DUCK_COLORS, DUCK_SIZES } from '@/constants/ducks'
 
 import { duckFormSchema, type DuckFormValues } from '@/schemas/duck-form.schema'
-import { useNavigate } from 'react-router'
+
+import type { Duck } from '@/models/duck'
 
 interface Props {
+  duck?: Duck
   isLoading?: boolean
+  isEditing?: boolean
   onSubmit?: (values: DuckFormValues) => void
 }
 
-export const DuckForm = ({ isLoading, onSubmit = () => {} }: Props) => {
+export const DuckForm = ({
+  duck,
+  isLoading,
+  isEditing = false,
+  onSubmit = () => {},
+}: Props) => {
   const navigate = useNavigate()
 
   const form = useForm<DuckFormValues>({
     resolver: zodResolver(duckFormSchema),
     defaultValues: {
-      color: undefined,
-      size: undefined,
-      price: undefined,
-      quantity: undefined,
+      color: duck?.color,
+      size: duck?.size,
+      price: duck?.price,
+      quantity: duck?.quantity,
     },
   })
 
@@ -70,7 +79,9 @@ export const DuckForm = ({ isLoading, onSubmit = () => {} }: Props) => {
           <ChevronLeft />
         </Button>
 
-        <CardTitle className="text-xl">Agregar nuevo patito</CardTitle>
+        <CardTitle className="text-xl">
+          {isEditing ? 'Editar patito' : 'Agregar nuevo patito'}
+        </CardTitle>
       </CardHeader>
       <CardContent>
         <Form {...form}>
@@ -87,6 +98,7 @@ export const DuckForm = ({ isLoading, onSubmit = () => {} }: Props) => {
                   <Select
                     onValueChange={field.onChange}
                     defaultValue={field.value}
+                    disabled={isEditing}
                   >
                     <FormControl>
                       <SelectTrigger className="w-full">
@@ -115,6 +127,7 @@ export const DuckForm = ({ isLoading, onSubmit = () => {} }: Props) => {
                   <Select
                     onValueChange={field.onChange}
                     defaultValue={field.value}
+                    disabled={isEditing}
                   >
                     <FormControl>
                       <SelectTrigger className="w-full">
@@ -168,8 +181,12 @@ export const DuckForm = ({ isLoading, onSubmit = () => {} }: Props) => {
             />
 
             <CardFooter className="flex justify-end px-0 pb-0">
-              <Button type="submit" disabled={isLoading}>
-                Agregar
+              <Button
+                className="cursor-pointer"
+                type="submit"
+                disabled={isLoading}
+              >
+                {isEditing ? 'Actualizar' : 'Agregar'}
               </Button>
             </CardFooter>
           </form>

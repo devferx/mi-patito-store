@@ -1,5 +1,6 @@
 import { ColumnDef } from '@tanstack/react-table'
 import { Pencil } from 'lucide-react'
+import { Link } from 'react-router'
 
 import { Button } from '@/components/ui/button'
 import { ColorIndicator } from './color-indicator'
@@ -37,12 +38,17 @@ export const ducksTableColumns: ColumnDef<Duck>[] = [
     id: 'actions',
     header: 'Acciones',
     cell: ({ row }) => {
+      const duck = row.original
+
       return (
         <div>
-          <Button variant="ghost" size="sm" onClick={() => {}} className="h-8">
-            <Pencil className="mr-1 h-4 w-4" /> Editar
+          <Button variant="ghost" size="sm" className="h-8" asChild>
+            <Link to={`/edit-duck/${duck.id}`}>
+              <Pencil className="mr-1 h-4 w-4" /> Editar
+            </Link>
           </Button>
-          <DeleteDuckAction duck={row.original} />
+
+          <DeleteDuckAction duck={duck} />
         </div>
       )
     },
