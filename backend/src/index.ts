@@ -2,6 +2,7 @@ import express from 'express'
 import cors from 'cors'
 
 import duckRoutes from './routes/ducks.routes'
+import ordersRoutes from './routes/orders.routes'
 
 import { orm } from './lib/prisma'
 
@@ -13,6 +14,7 @@ async function main() {
   app.use(cors())
 
   app.use('/api/ducks', duckRoutes)
+  app.use('/api/orders', ordersRoutes)
 
   app.listen(port, () => {
     console.log(`🚀 Server running at http://localhost:${port}`)
