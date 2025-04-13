@@ -32,7 +32,12 @@ export const updateDuck = async (req: Request, res: Response) => {
   const { id } = req.params
   const duck = req.body
 
-  const updatedDuck = await ducksService.updateDuck(Number(id), duck)
+  const updateData: any = {}
+
+  if (!!duck.quantity) updateData.quantity = duck.quantity
+  if (!!duck.price) updateData.price = duck.price
+
+  const updatedDuck = await ducksService.updateDuck(Number(id), updateData)
 
   res.json({
     ok: true,
