@@ -1,3 +1,5 @@
+import { DuckColor, DuckSize } from '@/constants/ducks'
+
 export interface Duck {
   id: number
   color: DuckColor
@@ -5,6 +7,3 @@ export interface Duck {
   price: number
   quantity: number
 }
-
-export type DuckColor = 'Red' | 'Green' | 'Yellow' | 'Black'
-export type DuckSize = 'XLarge' | 'Large' | 'Medium' | 'Small' | 'XSmall'

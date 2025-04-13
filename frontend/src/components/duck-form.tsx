@@ -26,6 +26,7 @@ import {
   FormMessage,
 } from '@/components/ui/form'
 import { duckFormSchema, DuckFormValues } from '@/schemas/duck-form.schema'
+import { DUCK_COLORS, DUCK_COLOR_DETAILS, DUCK_SIZES } from '@/constants/ducks'
 
 export const DuckForm = () => {
   const form = useForm<DuckFormValues>({
@@ -69,10 +70,11 @@ export const DuckForm = () => {
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent position="popper">
-                      <SelectItem value="Red">Rojo</SelectItem>
-                      <SelectItem value="Green">Verde</SelectItem>
-                      <SelectItem value="Yellow">Amarillo</SelectItem>
-                      <SelectItem value="Black">Negro</SelectItem>
+                      {DUCK_COLORS.map((color) => (
+                        <SelectItem key={color} value={color}>
+                          {DUCK_COLOR_DETAILS[color].label}
+                        </SelectItem>
+                      ))}
                     </SelectContent>
                   </Select>
                   <FormMessage />
@@ -96,11 +98,11 @@ export const DuckForm = () => {
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent position="popper">
-                      <SelectItem value="XLarge">XLarge</SelectItem>
-                      <SelectItem value="Large">Large</SelectItem>
-                      <SelectItem value="Medium">Medium</SelectItem>
-                      <SelectItem value="Small">Small</SelectItem>
-                      <SelectItem value="XSmall">XSmall</SelectItem>
+                      {DUCK_SIZES.map((size) => (
+                        <SelectItem key={size} value={size}>
+                          {size}
+                        </SelectItem>
+                      ))}
                     </SelectContent>
                   </Select>
                   <FormMessage />

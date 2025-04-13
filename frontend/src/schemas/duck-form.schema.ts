@@ -1,10 +1,11 @@
 import { z } from 'zod'
+import { DUCK_COLORS, DUCK_SIZES } from '@/constants/ducks'
 
 export const duckFormSchema = z.object({
-  color: z.enum(['Red', 'Green', 'Yellow', 'Black'] as const, {
+  color: z.enum(DUCK_COLORS, {
     required_error: 'Por favor selecciona un color',
   }),
-  size: z.enum(['XLarge', 'Large', 'Medium', 'Small', 'XSmall'] as const, {
+  size: z.enum(DUCK_SIZES, {
     required_error: 'Por favor selecciona un tamaño',
   }),
   price: z.coerce

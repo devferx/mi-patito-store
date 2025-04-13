@@ -1,12 +1,5 @@
-import type { DuckColor } from '@/models/duck'
-
-const colorDetails: Record<DuckColor, { label: string; color: string }> = {
-  Black: { label: 'Negro', color: '#171717' },
-  Yellow: { label: 'Amarillo', color: '#eab308' },
-  Green: { label: 'Verde', color: '#22c55e' },
-  Red: { label: 'Rojo', color: '#ef4444' },
-}
+import { DUCK_COLOR_DETAILS, type DuckColor } from '@/constants/ducks'
 
 export function getDuckColorDetails(duckColor: DuckColor) {
-  return colorDetails[duckColor]
+  return DUCK_COLOR_DETAILS[duckColor]
 }
