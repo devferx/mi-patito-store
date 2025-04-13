@@ -2,6 +2,8 @@ import { useDucks } from '@/hooks/use-ducks'
 
 import { ducksTableColumns } from '@/components/ducks-table/ducks-table-columns'
 import { DucksTable } from '@/components/ducks-table/ducks-table'
+import { Button } from '@/components/ui/button'
+import { Link } from 'react-router'
 
 export const HomePage = () => {
   const { getDucksQuery } = useDucks()
@@ -11,10 +13,17 @@ export const HomePage = () => {
     <main>
       <section className="container mx-auto py-20">
         <h2 className="text-center text-3xl font-bold">Almacen de Patitos</h2>
+
         <div className="mx-auto mt-10 max-w-5xl">
-          {data && data.length > 0 && (
-            <DucksTable columns={ducksTableColumns} data={data} />
-          )}
+          <Button asChild={true}>
+            <Link to="/create-duck">Agregar patito</Link>
+          </Button>
+
+          <div className="mt-2">
+            {data && data.length > 0 && (
+              <DucksTable columns={ducksTableColumns} data={data} />
+            )}
+          </div>
         </div>
       </section>
     </main>

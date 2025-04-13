@@ -29,7 +29,7 @@ export const DuckForm = () => {
               <Label htmlFor="color">Color</Label>
               <Select>
                 <SelectTrigger id="color" className="w-full">
-                  <SelectValue placeholder="Select" />
+                  <SelectValue placeholder="Seleccionar color" />
                 </SelectTrigger>
                 <SelectContent position="popper">
                   <SelectItem value="Red">Rojo</SelectItem>
@@ -44,7 +44,7 @@ export const DuckForm = () => {
               <Label htmlFor="size">Tamaño</Label>
               <Select>
                 <SelectTrigger id="size" className="w-full">
-                  <SelectValue placeholder="Select" />
+                  <SelectValue placeholder="Seleccionar tamaño" />
                 </SelectTrigger>
                 <SelectContent position="popper">
                   <SelectItem value="XLarge">XLarge</SelectItem>
