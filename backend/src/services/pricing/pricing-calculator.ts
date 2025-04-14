@@ -43,18 +43,19 @@ export class ComprehensivePricingStrategy implements PricingStrategy {
 
     const price = duck.price
 
+    const baseCost = price * quantity
     const details: PricingDetails = {
-      baseCost: price * quantity,
+      baseCost,
       discounts: [],
       increases: [],
       totalCost: 0,
     }
 
-    let totalCost = details.baseCost
+    let totalCost = baseCost
 
     // Quantity-based discount rules
     if (quantity > 100) {
-      const discountAmount = totalCost * 0.2
+      const discountAmount = baseCost * 0.2
       details.discounts.push({
         name: 'Descuento por pedido grande (>100 unidades)',
         amount: discountAmount,
@@ -64,21 +65,23 @@ export class ComprehensivePricingStrategy implements PricingStrategy {
 
     // Rules by package type
     if (packageType === PackageType.WOOD) {
-      const increaseAmount = totalCost * 0.05
+      const increaseAmount = baseCost * 0.05
       details.increases.push({
         name: 'Cargo por paquete de madera',
         amount: increaseAmount,
       })
       totalCost += increaseAmount
-    } else if (packageType === PackageType.PLASTIC) {
-      const increaseAmount = totalCost * 0.1
+    }
+    if (packageType === PackageType.PLASTIC) {
+      const increaseAmount = baseCost * 0.1
       details.increases.push({
         name: 'Cargo por paquete de plástico',
         amount: increaseAmount,
       })
       totalCost += increaseAmount
-    } else if (packageType === PackageType.CARDBOARD) {
-      const discountAmount = totalCost * 0.01
+    }
+    if (packageType === PackageType.CARDBOARD) {
+      const discountAmount = baseCost * 0.01
       details.discounts.push({
         name: 'Descuento por paquete de cartón',
         amount: discountAmount,
@@ -94,15 +97,17 @@ export class ComprehensivePricingStrategy implements PricingStrategy {
     if (upperCountry === 'USA') {
       countryFeeRate = 0.18
       countryFeeName = 'Cargo por envío a USA'
-    } else if (upperCountry === 'BOLIVIA') {
+    }
+    if (upperCountry === 'BOLIVIA') {
       countryFeeRate = 0.13
       countryFeeName = 'Cargo por envío a Bolivia'
-    } else if (upperCountry === 'INDIA') {
+    }
+    if (upperCountry === 'INDIA') {
       countryFeeRate = 0.19
       countryFeeName = 'Cargo por envío a India'
     }
 
-    const countryFeeAmount = totalCost * countryFeeRate
+    const countryFeeAmount = baseCost * countryFeeRate
 
     details.increases.push({
       name: countryFeeName,
@@ -117,14 +122,16 @@ export class ComprehensivePricingStrategy implements PricingStrategy {
         amount: 400,
       })
       totalCost += 400
-    } else if (shippingMethod === ShippingMethod.LAND) {
+    }
+    if (shippingMethod === ShippingMethod.LAND) {
       const landShippingFee = 10 * quantity
       details.increases.push({
         name: 'Cargo por envío terrestre',
         amount: landShippingFee,
       })
       totalCost += landShippingFee
-    } else if (shippingMethod === ShippingMethod.AIR) {
+    }
+    if (shippingMethod === ShippingMethod.AIR) {
       let airShippingFee = 30 * quantity
 
       if (quantity > 1000) {
