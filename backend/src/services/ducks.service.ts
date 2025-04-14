@@ -84,10 +84,13 @@ export const updateDuck = async (id: number, duck: any) => {
 }
 
 export const deleteDuck = async (id: number) => {
-  const deletedDuck = await orm.duck.update({
+  await orm.duck.update({
+    where: {
+      id,
+      isDeleted: false,
+    },
     data: {
       isDeleted: true,
     },
-    where: { id },
   })
 }
