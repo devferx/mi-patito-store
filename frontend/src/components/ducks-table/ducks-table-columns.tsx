@@ -2,6 +2,7 @@ import { ColumnDef } from '@tanstack/react-table'
 import { Pencil } from 'lucide-react'
 import { Link } from 'react-router'
 
+import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { ColorIndicator } from './color-indicator'
 import { DeleteDuckAction } from './delete-duck-action'
@@ -21,6 +22,7 @@ export const ducksTableColumns: ColumnDef<Duck>[] = [
   {
     accessorKey: 'size',
     header: 'Tamaño',
+    cell: ({ row }) => <Badge variant="outline">{row.original.size}</Badge>,
   },
   {
     accessorKey: 'price',
