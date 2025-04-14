@@ -1,7 +1,7 @@
 import { PackagingFactory } from './packaging/package-factory'
+import { PricingCalculator } from './pricing'
 
 import type { OrderRequest, OrderResponse } from '../models/order.model'
-import { PricingCalculator } from './pricing/pricing-calculator'
 
 const packagingFactory = new PackagingFactory()
 const pricingCalculator = new PricingCalculator()
