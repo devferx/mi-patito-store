@@ -1,5 +1,7 @@
 # Mi Patito Store
 
+![screenshot](https://i.ibb.co/HT6CMZw1/573-1x-shots-so.png)
+
 ## Project Description
 Mi Patito Store is a full-stack e-commerce application designed to manage and sell duck-related products. The project is divided into two main parts:
 
