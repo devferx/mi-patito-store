@@ -8,5 +8,10 @@ export const useDucks = () => {
     queryFn: getAllDucks,
   })
 
-  return { getDucksQuery }
+  const totalDucks =
+    getDucksQuery.data?.reduce((acc, duck) => acc + (duck.quantity ?? 0), 0) ??
+    0
+  const totalTypes = getDucksQuery.data?.length ?? 0
+
+  return { getDucksQuery, totalDucks, totalTypes }
 }
