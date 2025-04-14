@@ -3,7 +3,7 @@ import {
   ProtectionType,
   ShippingMethod,
 } from '../../../models/order.model'
-import { ProtectionTypeStrategy } from '../interfaces/packagin-interfaces'
+import type { ProtectionTypeStrategy } from '../interfaces/packagin-interfaces'
 
 export class ShippingMethodPackageProtectionStrategy
   implements ProtectionTypeStrategy

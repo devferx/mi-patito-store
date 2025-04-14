@@ -1,9 +1,8 @@
-import { DuckSize } from '@prisma/client'
-
-import {
-  ShippingMethod,
+import type { DuckSize } from '@prisma/client'
+import type {
   PackageType,
   ProtectionType,
+  ShippingMethod,
 } from '../../../models/order.model'
 
 export interface PackageTypeStrategy {

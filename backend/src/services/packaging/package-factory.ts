@@ -1,15 +1,16 @@
-import { DuckSize } from '@prisma/client'
-import {
-  ShippingMethod,
+import { ShippingMethodPackageProtectionStrategy } from './strategies/shipping-method-package-protection-strategy'
+import { SizeBasedPackageStrategy } from './strategies/size-based-package-strategy'
+
+import type { DuckSize } from '@prisma/client'
+import type {
   PackageType,
   ProtectionType,
+  ShippingMethod,
 } from '../../models/order.model'
-import {
+import type {
   PackageTypeStrategy,
   ProtectionTypeStrategy,
 } from './interfaces/packagin-interfaces'
-import { SizeBasedPackageStrategy } from './strategies/size-based-package-strategy'
-import { ShippingMethodPackageProtectionStrategy } from './strategies/shipping-method-package-protection-strategy'
 
 export class PackagingFactory {
   private packageTypeStrategy: PackageTypeStrategy
