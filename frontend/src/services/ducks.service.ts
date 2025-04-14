@@ -12,21 +12,22 @@ export const getAllDucks = async (): Promise<Duck[]> => {
   return ducks
 }
 
-export const createDuck = async (duck: Omit<Duck, 'id'>): Promise<Duck> => {
+export const createDuck = async (
+  duck: Omit<Duck, 'id'>,
+): Promise<CreateDuckResponse> => {
   const { data } = await api.post<CreateDuckResponse>('/ducks', duck)
-  const { data: newDuck } = data
-  return newDuck
+  return data
 }
 
 export const updateDuck = async (
   id: string,
   duck: Partial<Omit<Duck, 'id'>>,
-): Promise<Duck> => {
+): Promise<EditDuckResponse> => {
   const { data } = await api.put<EditDuckResponse>(`/ducks/${id}`, duck)
-  const { data: updatedDuck } = data
-  return updatedDuck
+  return data
 }
 
-export const deleteDuck = async (id: string): Promise<void> => {
-  await api.delete<ServerResponse>(`/ducks/${id}`)
+export const deleteDuck = async (id: string): Promise<ServerResponse> => {
+  const { data } = await api.delete<ServerResponse>(`/ducks/${id}`)
+  return data
 }

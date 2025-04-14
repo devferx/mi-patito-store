@@ -1,5 +1,6 @@
 import { useMutation } from '@tanstack/react-query'
 import { useNavigate } from 'react-router'
+import { toast } from 'sonner'
 
 import { createDuck } from '@/services/ducks.service'
 
@@ -10,7 +11,8 @@ export const useCreateDuck = () => {
 
   const createDuckMutation = useMutation({
     mutationFn: createDuck,
-    onSuccess: () => {
+    onSuccess: ({ message }) => {
+      toast.success(message)
       navigate('/')
     },
   })

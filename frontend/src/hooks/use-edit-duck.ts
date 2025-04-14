@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { toast } from 'sonner'
 
 import { updateDuck } from '@/services/ducks.service'
 
@@ -41,8 +42,9 @@ export const useEditDuck = (id: string | undefined) => {
 
   const editDuckMutation = useMutation({
     mutationFn: ({ id, data }: EditDuckParams) => updateDuck(id, data),
-    onSuccess: () => {
+    onSuccess: ({ message }) => {
       queryClient.invalidateQueries({ queryKey: ['ducks'] })
+      toast.success(message)
       navigate('/')
     },
   })

@@ -8,8 +8,8 @@ export const useDeleteDuck = () => {
 
   const deleteDuckMutation = useMutation({
     mutationFn: deleteDuck,
-    onSuccess: () => {
-      toast.success('Se ha eliminado el patito correctamente')
+    onSuccess: (data) => {
+      toast.success(data.message)
       queryClient.invalidateQueries({ queryKey: ['ducks'] })
     },
   })
