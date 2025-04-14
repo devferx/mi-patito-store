@@ -30,7 +30,7 @@ const getSingleDuck = async (id: number) => {
   })
 
   if (!duck) {
-    throw new Error(`Duck with id ${id} not found`)
+    throw new Error(`Patito con id ${id} no encontrado`)
   }
 
   return duck

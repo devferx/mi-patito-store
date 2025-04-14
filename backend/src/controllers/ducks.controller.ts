@@ -8,7 +8,7 @@ export const getDucks = async (req: Request, res: Response) => {
   const ducks = await ducksService.getAllDucks()
   res.json({
     ok: true,
-    message: 'Retrieved all ducks',
+    message: 'Se obtuvieron todos los patitos',
     data: ducks,
   })
 }
@@ -21,8 +21,8 @@ export const createDuck = async (req: Request, res: Response) => {
 
     const message =
       createdDuck.quantity > newDuck.quantity
-        ? 'Duck already exists, quantity updated'
-        : 'Created a new duck'
+        ? 'El patito ya existe, la cantidad fue actualizada'
+        : 'Nuevo patito creado'
 
     res.status(201).json({
       ok: true,
@@ -32,7 +32,7 @@ export const createDuck = async (req: Request, res: Response) => {
   } catch (error: any) {
     res.status(400).json({
       ok: false,
-      message: `Error creating duck: ${error.message ?? 'Unknown error'}`,
+      message: `Error al crear el patito: ${error.message ?? 'Unknown error'}`,
     })
   }
 }
@@ -51,13 +51,15 @@ export const updateDuck = async (req: Request, res: Response) => {
 
     res.json({
       ok: true,
-      message: `Updated duck`,
+      message: 'Patito actualizado',
       data: omitMetaFields(updatedDuck),
     })
   } catch (error: any) {
     res.status(400).json({
       ok: false,
-      message: `Error updating duck: ${error.message ?? 'Unknown error'}`,
+      message: `Error al actualizar el patito: ${
+        error.message ?? 'Unknown error'
+      }`,
     })
   }
 }
@@ -70,12 +72,14 @@ export const deleteDuck = async (req: Request, res: Response) => {
 
     res.json({
       ok: true,
-      message: `Deleted duck with id ${id}`,
+      message: `Patito eliminado con id ${id}`,
     })
   } catch (error: any) {
     res.status(400).json({
       ok: false,
-      message: `Error deleting duck: ${error.message ?? 'Unknown error'}`,
+      message: `Error al eliminar el patito: ${
+        error.message ?? 'Unknown error'
+      }`,
     })
   }
 }
