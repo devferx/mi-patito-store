@@ -1,4 +1,5 @@
 import { DucksRepository } from '../repositories/ducks.repository'
+import { omitMetaFields } from '../utils/omit-meta-fields'
 
 export class DucksService {
   private ducksRepository: DucksRepository
@@ -42,19 +43,24 @@ export class DucksService {
         },
       )
 
-      return updatedDuck
+      return omitMetaFields(updatedDuck)
     }
 
     // If duck doesn't exist, create a new one
     const createdDuck = await this.ducksRepository.createDuck(duck)
-    return createdDuck
+    return omitMetaFields(createdDuck)
   }
 
   async updateDuck(id: number, duck: any) {
-    await this.getSingleDuck(id)
-    const updatedDuck = await this.ducksRepository.updateDuck(id, duck)
+    const updateData: any = {}
 
-    return updatedDuck
+    if (!!duck.quantity) updateData.quantity = duck.quantity
+    if (!!duck.price) updateData.price = duck.price
+
+    await this.getSingleDuck(id)
+    const updatedDuck = await this.ducksRepository.updateDuck(id, updateData)
+
+    return omitMetaFields(updatedDuck)
   }
 
   async deleteDuck(id: number) {

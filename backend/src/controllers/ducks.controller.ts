@@ -2,8 +2,6 @@ import type { Request, Response } from 'express'
 
 import { DucksService } from '../services/ducks.service'
 
-import { omitMetaFields } from '../utils/omit-meta-fields'
-
 const ducksService = new DucksService()
 
 export const getDucks = async (req: Request, res: Response) => {
@@ -29,7 +27,7 @@ export const createDuck = async (req: Request, res: Response) => {
     res.status(201).json({
       ok: true,
       message,
-      data: omitMetaFields(createdDuck),
+      data: createdDuck,
     })
   } catch (error: any) {
     res.status(400).json({
@@ -43,18 +41,13 @@ export const updateDuck = async (req: Request, res: Response) => {
   const { id } = req.params
   const duck = req.body
 
-  const updateData: any = {}
-
-  if (!!duck.quantity) updateData.quantity = duck.quantity
-  if (!!duck.price) updateData.price = duck.price
-
   try {
-    const updatedDuck = await ducksService.updateDuck(Number(id), updateData)
+    const updatedDuck = await ducksService.updateDuck(Number(id), duck)
 
     res.json({
       ok: true,
       message: 'Patito actualizado',
-      data: omitMetaFields(updatedDuck),
+      data: updatedDuck,
     })
   } catch (error: any) {
     res.status(400).json({
