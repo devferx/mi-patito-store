@@ -5,7 +5,7 @@ import { DucksService } from '../services/ducks.service'
 export class DucksController {
   constructor(private readonly ducksService: DucksService) {}
 
-  getDucks = async (req: Request, res: Response) => {
+  async getDucks(req: Request, res: Response) {
     const ducks = await this.ducksService.getAllDucks()
     res.json({
       ok: true,
@@ -14,7 +14,7 @@ export class DucksController {
     })
   }
 
-  createDuck = async (req: Request, res: Response) => {
+  async createDuck(req: Request, res: Response) {
     const newDuck = req.body
 
     try {
@@ -40,7 +40,7 @@ export class DucksController {
     }
   }
 
-  updateDuck = async (req: Request, res: Response) => {
+  async updateDuck(req: Request, res: Response) {
     const { id } = req.params
     const duck = req.body
 
@@ -62,7 +62,7 @@ export class DucksController {
     }
   }
 
-  deleteDuck = async (req: Request, res: Response) => {
+  async deleteDuck(req: Request, res: Response) {
     const { id } = req.params
 
     try {
