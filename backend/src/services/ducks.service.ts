@@ -1,5 +1,6 @@
 import { DuckColor, DuckSize } from '@prisma/client'
 import { orm } from '../lib/prisma'
+import { omitMetaFields } from '../utils/omit-meta-fields'
 
 export const getAllDucks = async () => {
   const ducks = await orm.duck.findMany({
@@ -54,7 +55,7 @@ export const createDuck = async (duck: any) => {
       },
     })
 
-    return updatedDuck
+    return omitMetaFields(updatedDuck)
   }
 
   // If duck doesn't exist, create a new one
@@ -67,7 +68,7 @@ export const createDuck = async (duck: any) => {
     },
   })
 
-  return createdDuck
+  return omitMetaFields(createdDuck)
 }
 
 export const updateDuck = async (id: number, duck: any) => {
@@ -79,7 +80,7 @@ export const updateDuck = async (id: number, duck: any) => {
     data: duck,
   })
 
-  return updatedDuck
+  return omitMetaFields(updatedDuck)
 }
 
 export const deleteDuck = async (id: number) => {
