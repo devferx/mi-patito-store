@@ -3,8 +3,10 @@ import { DuckColor, DuckSize } from '@prisma/client'
 import { DucksService } from '../ducks.service'
 
 import { PackageType, ShippingMethod } from '../../models/order.model'
+import { DucksRepository } from '../../repositories/ducks.repository'
 
-const ducksService = new DucksService()
+const ducksRepository = new DucksRepository()
+const ducksService = new DucksService(ducksRepository)
 
 export interface PricingDetails {
   baseCost: number

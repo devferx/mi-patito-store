@@ -1,17 +1,18 @@
 import { Router } from 'express'
 
-import {
-  getDucks,
-  createDuck,
-  updateDuck,
-  deleteDuck,
-} from '../controllers/ducks.controller'
+import { DucksController } from '../controllers/ducks.controller'
+import { DucksRepository } from '../repositories/ducks.repository'
+import { DucksService } from '../services/ducks.service'
 
 const router = Router()
 
-router.get('/', getDucks)
-router.post('/', createDuck)
-router.put('/:id', updateDuck)
-router.delete('/:id', deleteDuck)
+const ducksRepository = new DucksRepository()
+const ducksService = new DucksService(ducksRepository)
+const ducksController = new DucksController(ducksService)
+
+router.get('/', ducksController.getDucks)
+router.post('/', ducksController.createDuck)
+router.put('/:id', ducksController.updateDuck)
+router.delete('/:id', ducksController.deleteDuck)
 
 export default router

@@ -1,5 +1,6 @@
-import { DuckColor, DuckSize } from '@prisma/client'
 import { orm } from '../lib/prisma'
+
+import { DuckColor, DuckSize } from '@prisma/client'
 
 export class DucksRepository {
   async getAllDucks() {

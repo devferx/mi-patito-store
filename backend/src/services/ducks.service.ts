@@ -2,11 +2,7 @@ import { DucksRepository } from '../repositories/ducks.repository'
 import { omitMetaFields } from '../utils/omit-meta-fields'
 
 export class DucksService {
-  private ducksRepository: DucksRepository
-
-  constructor() {
-    this.ducksRepository = new DucksRepository()
-  }
+  constructor(private readonly ducksRepository: DucksRepository) {}
 
   async getAllDucks() {
     const ducks = await this.ducksRepository.getAllDucks()
