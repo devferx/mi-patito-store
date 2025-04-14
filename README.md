@@ -33,24 +33,28 @@ Mi Patito Store is a full-stack e-commerce application designed to manage and se
 
 ### Backend
 
-1. **Install dependencies**:
+1. **Navigate to the backend directory**:
+   ```bash
+   cd mi-patito-store/backend
+   ```
+2. **Install dependencies**:
    ```bash
    npm install
    ```
 
-2. **Set up the database**:
+3. **Set up the database**:
    - Ensure Docker is installed and running.
    - Start the database using Docker Compose:
      ```bash
      docker-compose up -d
      ```
 
-3. **Run database migrations**:
+4. **Run database migrations**:
    ```bash
    npx prisma migrate dev
    ```
 
-4. **Start the development server**:
+5. **Start the development server**:
    ```bash
    npm run dev
    ```
