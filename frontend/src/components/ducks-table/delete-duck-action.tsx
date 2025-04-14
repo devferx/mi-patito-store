@@ -16,6 +16,7 @@ import {
 import { useDeleteDuck } from '@/hooks/use-delete-duck'
 
 import type { Duck } from '@/models/duck'
+import { getDuckColorDetails } from '@/utils/get-duck-color-details'
 
 interface DeleteDuckDialogProps {
   duck: Duck
@@ -24,6 +25,8 @@ interface DeleteDuckDialogProps {
 export const DeleteDuckAction = ({ duck }: DeleteDuckDialogProps) => {
   const { deleteDuckMutation, handleDelete } = useDeleteDuck()
   const isDeleting = deleteDuckMutation.isPending
+
+  const { color, label } = getDuckColorDetails(duck.color)
 
   return (
     <AlertDialog>
@@ -41,8 +44,26 @@ export const DeleteDuckAction = ({ duck }: DeleteDuckDialogProps) => {
         <AlertDialogHeader>
           <AlertDialogTitle>¿Estás seguro?</AlertDialogTitle>
           <AlertDialogDescription>
-            Esta acción eliminará el patito del inventario. Esta acción no se
-            puede deshacer
+            <div className="bg-muted/30 mt-2 rounded-md border p-4">
+              <div className="mb-2 flex items-center gap-2">
+                <div
+                  className="h-4 w-4 rounded-full"
+                  style={{ backgroundColor: color }}
+                />
+                <span className="font-medium">
+                  Patito {label} {duck.size}
+                </span>
+              </div>
+              <div className="text-muted-foreground text-sm">
+                ID: {duck.id} | Cantidad: {duck.quantity.toLocaleString()} |
+                Precio: {duck.price} USD
+              </div>
+            </div>
+
+            <p className="mt-4">
+              Esta acción eliminará el patito del inventario. Esta acción no se
+              puede deshacer
+            </p>
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
