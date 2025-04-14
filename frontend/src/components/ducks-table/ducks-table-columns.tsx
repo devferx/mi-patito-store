@@ -38,6 +38,7 @@ export const ducksTableColumns: ColumnDef<Duck>[] = [
     header: ({ column }) => {
       return (
         <Button
+          className="cursor-pointer"
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
         >
