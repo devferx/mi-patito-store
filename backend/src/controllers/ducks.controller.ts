@@ -1,8 +1,10 @@
 import type { Request, Response } from 'express'
 
-import * as ducksService from '../services/ducks.service'
+import { DucksService } from '../services/ducks.service'
 
 import { omitMetaFields } from '../utils/omit-meta-fields'
+
+const ducksService = new DucksService()
 
 export const getDucks = async (req: Request, res: Response) => {
   const ducks = await ducksService.getAllDucks()
