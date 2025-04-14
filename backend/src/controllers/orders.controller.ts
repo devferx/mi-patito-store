@@ -2,7 +2,7 @@ import { Request, Response } from 'express'
 
 import { OrdersService } from '../services/orders.service'
 
-import { type OrderRequest, ShippingMethod } from '../models/order.model'
+import type { OrderRequest } from '../models/order.model'
 
 export class OrdersController {
   constructor(private readonly ordersService: OrdersService) {}
@@ -20,7 +20,8 @@ export class OrdersController {
     ) {
       res.status(400).json({
         ok: false,
-        message: 'Missing required fields',
+        message:
+          'Missing required fields: color, size, quantity, destinationCountry, shippingMethod',
       })
       return
     }
