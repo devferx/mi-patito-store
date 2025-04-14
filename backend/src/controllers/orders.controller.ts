@@ -25,29 +25,14 @@ export class OrdersController {
       return
     }
 
-    let normalizedShippingMethod: ShippingMethod
+    const shippingMethodResult =
+      this.ordersService.normalizeShippingMethod(shippingMethod)
 
-    if (
-      shippingMethod === 'Tierra' ||
-      shippingMethod.toLowerCase() === 'tierra'
-    ) {
-      normalizedShippingMethod = ShippingMethod.LAND
-    } else if (
-      shippingMethod === 'Aire' ||
-      shippingMethod.toLowerCase() === 'aire'
-    ) {
-      normalizedShippingMethod = ShippingMethod.AIR
-    } else if (
-      shippingMethod === 'Mar' ||
-      shippingMethod.toLowerCase() === 'mar'
-    ) {
-      normalizedShippingMethod = ShippingMethod.SEA
-    } else {
+    if (!shippingMethodResult.isValid) {
       res.status(400).json({
         ok: false,
-        message: 'Método de envío inválido. Use Tierra, Aire o Mar',
+        message: `Método de envío inválido. Usa "air", "land" o "sea"`,
       })
-
       return
     }
 
@@ -56,7 +41,7 @@ export class OrdersController {
       size,
       quantity: Number(quantity),
       destinationCountry,
-      shippingMethod: normalizedShippingMethod,
+      shippingMethod: shippingMethodResult.method!,
     }
 
     const orderResponse = await this.ordersService.processOrder(orderRequest)
