@@ -1,6 +1,5 @@
 import { DuckColor, DuckSize } from '@prisma/client'
 import { orm } from '../lib/prisma'
-import { omitMetaFields } from '../utils/omit-meta-fields'
 
 export const getAllDucks = async () => {
   const ducks = await orm.duck.findMany({
@@ -20,6 +19,21 @@ export const getAllDucks = async () => {
   })
 
   return ducks
+}
+
+const getSingleDuck = async (id: number) => {
+  const duck = await orm.duck.findFirst({
+    where: {
+      id,
+      isDeleted: false,
+    },
+  })
+
+  if (!duck) {
+    throw new Error(`Duck with id ${id} not found`)
+  }
+
+  return duck
 }
 
 const findDuckByAttributes = async (
@@ -55,7 +69,7 @@ export const createDuck = async (duck: any) => {
       },
     })
 
-    return omitMetaFields(updatedDuck)
+    return updatedDuck
   }
 
   // If duck doesn't exist, create a new one
@@ -68,10 +82,12 @@ export const createDuck = async (duck: any) => {
     },
   })
 
-  return omitMetaFields(createdDuck)
+  return createdDuck
 }
 
 export const updateDuck = async (id: number, duck: any) => {
+  await getSingleDuck(id)
+
   const updatedDuck = await orm.duck.update({
     where: {
       id,
@@ -80,17 +96,20 @@ export const updateDuck = async (id: number, duck: any) => {
     data: duck,
   })
 
-  return omitMetaFields(updatedDuck)
+  return updatedDuck
 }
 
 export const deleteDuck = async (id: number) => {
+  await getSingleDuck(id)
+
   await orm.duck.update({
     where: {
       id,
-      isDeleted: false,
     },
     data: {
       isDeleted: true,
     },
   })
+
+  return true
 }
