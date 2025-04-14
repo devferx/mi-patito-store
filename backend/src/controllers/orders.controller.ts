@@ -1,7 +1,9 @@
 import { Request, Response } from 'express'
 
-import * as ordersService from '../services/orders.service'
+import { OrdersService } from '../services/orders.service'
 import { OrderRequest, ShippingMethod } from '../models/order.model'
+
+const ordersService = new OrdersService()
 
 export const createOrder = async (req: Request, res: Response) => {
   const { color, size, quantity, destinationCountry, shippingMethod } = req.body
