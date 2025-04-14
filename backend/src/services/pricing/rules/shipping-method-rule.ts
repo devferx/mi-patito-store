@@ -24,6 +24,11 @@ export class ShippingMethodRule implements PricingRule {
     }
     if (params.shippingMethod === ShippingMethod.AIR) {
       let airShippingFee = 30 * params.quantity
+      details.increases.push({
+        name: 'Cargo por envío aéreo',
+        amount: airShippingFee,
+      })
+
       if (params.quantity > 1000) {
         const airDiscount = airShippingFee * 0.15
         details.discounts.push({
@@ -32,10 +37,6 @@ export class ShippingMethodRule implements PricingRule {
         })
         airShippingFee -= airDiscount
       }
-      details.increases.push({
-        name: 'Cargo por envío aéreo',
-        amount: airShippingFee,
-      })
       details.totalCost += airShippingFee
     }
   }
