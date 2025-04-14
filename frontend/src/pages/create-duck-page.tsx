@@ -6,10 +6,8 @@ export const CreateDuckPage = () => {
   const { isPending: isLoading } = createDuckMutation
 
   return (
-    <main>
-      <section className="container mx-auto py-20">
-        <DuckForm isLoading={isLoading} onSubmit={handleSubmit} />
-      </section>
-    </main>
+    <section className="wrapper">
+      <DuckForm isLoading={isLoading} onSubmit={handleSubmit} />
+    </section>
   )
 }

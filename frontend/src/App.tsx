@@ -7,15 +7,19 @@ import { HomePage } from './pages/home-page'
 import { CreateDuckPage } from './pages/create-duck-page'
 import { EditDuckPage } from './pages/edit-duck-page'
 
+import { MainLayout } from './components/main-layout'
+
 export const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/create-duck" element={<CreateDuckPage />} />
-          <Route path="/edit-duck/:id" element={<EditDuckPage />} />
-        </Routes>
+        <MainLayout>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/create-duck" element={<CreateDuckPage />} />
+            <Route path="/edit-duck/:id" element={<EditDuckPage />} />
+          </Routes>
+        </MainLayout>
       </BrowserRouter>
     </QueryClientProvider>
   )

@@ -1,6 +1,6 @@
-import { getDuckColorDetails } from '@/utils/get-duck-color-label'
+import { getDuckColorDetails } from '@/utils/get-duck-color-details'
 
-import type { DuckColor } from '@/models/duck'
+import type { DuckColor } from '@/constants/ducks'
 
 interface Props {
   duckColor: DuckColor

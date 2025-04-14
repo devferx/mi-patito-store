@@ -29,9 +29,9 @@ export const DeleteDuckAction = ({ duck }: DeleteDuckDialogProps) => {
     <AlertDialog>
       <AlertDialogTrigger asChild>
         <Button
+          className="h-8 cursor-pointer text-red-500 hover:bg-red-50 hover:text-red-700"
           variant="ghost"
           size="sm"
-          className="h-8 text-red-500 hover:bg-red-50 hover:text-red-700"
         >
           <Trash2 className="mr-1 h-4 w-4" /> Borrar
         </Button>
@@ -46,11 +46,13 @@ export const DeleteDuckAction = ({ duck }: DeleteDuckDialogProps) => {
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>Cancelar</AlertDialogCancel>
+          <AlertDialogCancel className="cursor-pointer">
+            Cancelar
+          </AlertDialogCancel>
           <AlertDialogAction
-            disabled={isDeleting}
+            className="cursor-pointer bg-red-500 text-white hover:bg-red-600"
             onClick={() => handleDelete(duck.id.toString())}
-            className="bg-red-500 text-white hover:bg-red-600"
+            disabled={isDeleting}
           >
             {isDeleting ? 'Eliminando...' : 'Eliminar'}
           </AlertDialogAction>

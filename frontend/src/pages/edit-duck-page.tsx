@@ -25,22 +25,20 @@ export const EditDuckPage = () => {
 
   if (!duck) {
     return (
-      <div className="container mx-auto py-20 text-center">
+      <section className="wrapper">
         <h2 className="text-2xl">Cargando...</h2>
-      </div>
+      </section>
     )
   }
 
   return (
-    <main>
-      <section className="container mx-auto py-20">
-        <DuckForm
-          isEditing={true}
-          duck={duck}
-          isLoading={isLoading}
-          onSubmit={handleFormSubmit}
-        />
-      </section>
-    </main>
+    <section className="wrapper">
+      <DuckForm
+        isEditing={true}
+        duck={duck}
+        isLoading={isLoading}
+        onSubmit={handleFormSubmit}
+      />
+    </section>
   )
 }
