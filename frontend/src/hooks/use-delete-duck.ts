@@ -1,4 +1,5 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { toast } from 'sonner'
 
 import { deleteDuck } from '@/services/ducks.service'
 
@@ -8,6 +9,7 @@ export const useDeleteDuck = () => {
   const deleteDuckMutation = useMutation({
     mutationFn: deleteDuck,
     onSuccess: () => {
+      toast.success('Se ha eliminado el patito correctamente')
       queryClient.invalidateQueries({ queryKey: ['ducks'] })
     },
   })

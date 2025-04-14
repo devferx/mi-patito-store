@@ -8,6 +8,7 @@ import { CreateDuckPage } from './pages/create-duck-page'
 import { EditDuckPage } from './pages/edit-duck-page'
 
 import { MainLayout } from './components/main-layout'
+import { Toaster } from 'sonner'
 
 export const App = () => {
   return (
@@ -20,6 +21,7 @@ export const App = () => {
             <Route path="/edit-duck/:id" element={<EditDuckPage />} />
           </Routes>
         </MainLayout>
+        <Toaster />
       </BrowserRouter>
     </QueryClientProvider>
   )

@@ -1,9 +1,10 @@
 import { api } from './api.service'
 
 import type { Duck } from '@/models/duck'
-import type { GetAllDucksResponse } from '@/interfaces/get-all-ducks-response'
 import type { CreateDuckResponse } from '@/interfaces/create-duck-response'
 import type { EditDuckResponse } from '@/interfaces/edit-duck-response'
+import type { GetAllDucksResponse } from '@/interfaces/get-all-ducks-response'
+import type { ServerResponse } from '@/interfaces/server-response'
 
 export const getAllDucks = async (): Promise<Duck[]> => {
   const { data } = await api.get<GetAllDucksResponse>('/ducks')
@@ -26,7 +27,6 @@ export const updateDuck = async (
   return updatedDuck
 }
 
-// TODO: Update the return type
 export const deleteDuck = async (id: string): Promise<void> => {
-  await api.delete(`/ducks/${id}`)
+  await api.delete<ServerResponse>(`/ducks/${id}`)
 }
