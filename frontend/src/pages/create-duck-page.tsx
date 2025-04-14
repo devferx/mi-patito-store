@@ -1,7 +1,7 @@
 import { useCreateDuck } from '@/hooks/use-create-duck'
 import { DuckForm } from '@/components/duck-form'
 
-export const CreateDuckPage = () => {
+const CreateDuckPage = () => {
   const { createDuckMutation, handleSubmit } = useCreateDuck()
   const { isPending: isLoading } = createDuckMutation
 
@@ -11,3 +11,5 @@ export const CreateDuckPage = () => {
     </section>
   )
 }
+
+export default CreateDuckPage

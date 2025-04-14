@@ -42,3 +42,5 @@ export const EditDuckPage = () => {
     </section>
   )
 }
+
+export default EditDuckPage

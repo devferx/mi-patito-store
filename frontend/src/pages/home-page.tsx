@@ -9,7 +9,7 @@ import { HomeHeader } from '@/components/home-header'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
-export const HomePage = () => {
+const HomePage = () => {
   const { getDucksQuery, totalDucks, totalTypes } = useDucks()
   const { data } = getDucksQuery
 
@@ -43,3 +43,5 @@ export const HomePage = () => {
     </section>
   )
 }
+
+export default HomePage
