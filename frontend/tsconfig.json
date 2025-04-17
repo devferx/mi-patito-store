@@ -13,7 +13,10 @@
     "paths": {
       "@/*": [
         "./src/*"
-      ]
+      ],
+      "@ducks/*": [
+        "./src/features/ducks/*"
+      ],
     }
   }
 }

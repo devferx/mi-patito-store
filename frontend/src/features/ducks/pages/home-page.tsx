@@ -1,13 +1,13 @@
 import { Plus } from 'lucide-react'
 import { Link } from 'react-router'
 
-import { useDucks } from '@/features/ducks/hooks/use-ducks'
+import { useDucks } from '@ducks/hooks/use-ducks'
 
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { HomeHeader } from '@/features/ducks/components/dashboard-header/home-header'
-import { DucksTable } from '@/features/ducks/components/ducks-table/ducks-table'
-import { ducksTableColumns } from '@/features/ducks/components/ducks-table/ducks-table-columns'
+import { HomeHeader } from '@ducks/components/dashboard-header/home-header'
+import { DucksTable } from '@ducks/components/ducks-table/ducks-table'
+import { ducksTableColumns } from '@ducks/components/ducks-table/ducks-table-columns'
 
 const HomePage = () => {
   const { getDucksQuery, totalDucks, totalTypes } = useDucks()

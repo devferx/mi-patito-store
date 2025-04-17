@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { toast } from 'sonner'
 
-import { deleteDuck } from '@/features/ducks/services/ducks.service'
+import { deleteDuck } from '@ducks/services/ducks.service'
 
 export const useDeleteDuck = () => {
   const queryClient = useQueryClient()

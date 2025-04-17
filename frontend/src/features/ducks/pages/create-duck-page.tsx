@@ -1,5 +1,5 @@
-import { useCreateDuck } from '@/features/ducks/hooks/use-create-duck'
-import { DuckForm } from '@/features/ducks/components/duck-form'
+import { useCreateDuck } from '@ducks/hooks/use-create-duck'
+import { DuckForm } from '@ducks/components/duck-form'
 
 const CreateDuckPage = () => {
   const { createDuckMutation, handleSubmit } = useCreateDuck()

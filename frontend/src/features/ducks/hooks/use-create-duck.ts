@@ -2,9 +2,9 @@ import { useMutation } from '@tanstack/react-query'
 import { useNavigate } from 'react-router'
 import { toast } from 'sonner'
 
-import { createDuck } from '@/features/ducks/services/ducks.service'
+import { createDuck } from '@ducks/services/ducks.service'
 
-import type { DuckFormValues } from '@/features/ducks/schemas/duck-form.schema'
+import type { DuckFormValues } from '@ducks/schemas/duck-form.schema'
 
 export const useCreateDuck = () => {
   const navigate = useNavigate()

@@ -3,12 +3,12 @@ import { useNavigate } from 'react-router'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { toast } from 'sonner'
 
-import { updateDuck } from '@/features/ducks/services/ducks.service'
+import { updateDuck } from '@ducks/services/ducks.service'
 
-import { useDucks } from '@/features/ducks/hooks/use-ducks'
+import { useDucks } from '@ducks/hooks/use-ducks'
 
 import type { Duck } from '@/models/duck'
-import type { DuckFormValues } from '@/features/ducks/schemas/duck-form.schema'
+import type { DuckFormValues } from '@ducks/schemas/duck-form.schema'
 
 interface EditDuckParams {
   id: string

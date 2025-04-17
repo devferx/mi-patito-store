@@ -1,7 +1,7 @@
 import { Badge } from '@/components/ui/badge'
 import { StatCard } from './stat-card'
 
-import { DUCK_COLOR_DETAILS } from '@/features/ducks/constants/ducks'
+import { DUCK_COLOR_DETAILS } from '@ducks/constants/ducks'
 
 interface HomeHeaderProps {
   totalDucks?: number

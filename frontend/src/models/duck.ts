@@ -1,4 +1,4 @@
-import { DuckColor, DuckSize } from '@/features/ducks/constants/ducks'
+import { DuckColor, DuckSize } from '@ducks/constants/ducks'
 
 export interface Duck {
   id: number

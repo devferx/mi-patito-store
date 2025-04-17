@@ -13,10 +13,10 @@ import {
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog'
 
-import { useDeleteDuck } from '@/features/ducks/hooks/use-delete-duck'
+import { useDeleteDuck } from '@ducks/hooks/use-delete-duck'
 
 import type { Duck } from '@/models/duck'
-import { getDuckColorDetails } from '@/features/ducks/utils/get-duck-color-details'
+import { getDuckColorDetails } from '@ducks/utils/get-duck-color-details'
 
 interface DeleteDuckDialogProps {
   duck: Duck

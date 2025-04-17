@@ -19,12 +19,12 @@ import {
   DUCK_COLOR_DETAILS,
   DUCK_COLORS,
   DUCK_SIZES,
-} from '@/features/ducks/constants/ducks'
+} from '@ducks/constants/ducks'
 
 import {
   duckFormSchema,
   type DuckFormValues,
-} from '@/features/ducks/schemas/duck-form.schema'
+} from '@ducks/schemas/duck-form.schema'
 
 import type { Duck } from '@/models/duck'
 
