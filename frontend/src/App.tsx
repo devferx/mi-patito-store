@@ -7,7 +7,7 @@ import { queryClient } from './lib/react-query'
 
 import HomePage from './features/ducks/pages/home-page'
 
-import { MainLayout } from './components/main-layout'
+import { MainLayout } from './components/shared/main-layout'
 
 const CreateDuckPage = lazy(
   () => import('./features/ducks/pages/create-duck-page'),

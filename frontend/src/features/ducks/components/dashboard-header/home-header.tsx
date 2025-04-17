@@ -1,5 +1,5 @@
 import { Badge } from '@/components/ui/badge'
-import { StatCard } from '@/components/shared/stat-card'
+import { StatCard } from './stat-card'
 
 import { DUCK_COLOR_DETAILS } from '@/features/ducks/constants/ducks'
 

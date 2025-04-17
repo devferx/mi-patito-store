@@ -3,11 +3,11 @@ import { Link } from 'react-router'
 
 import { useDucks } from '@/features/ducks/hooks/use-ducks'
 
-import { DucksTable } from '@/features/ducks/components/ducks-table/ducks-table'
-import { ducksTableColumns } from '@/features/ducks/components/ducks-table/ducks-table-columns'
-import { HomeHeader } from '@/components/home-header'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { HomeHeader } from '@/features/ducks/components/dashboard-header/home-header'
+import { DucksTable } from '@/features/ducks/components/ducks-table/ducks-table'
+import { ducksTableColumns } from '@/features/ducks/components/ducks-table/ducks-table-columns'
 
 const HomePage = () => {
   const { getDucksQuery, totalDucks, totalTypes } = useDucks()
