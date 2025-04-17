@@ -1,9 +1,9 @@
 import { DuckColor, DuckSize } from '@prisma/client'
 
 export enum ShippingMethod {
-  LAND = 'Tierra',
-  AIR = 'Aire',
-  SEA = 'Mar',
+  LAND = 'Land',
+  AIR = 'Air',
+  SEA = 'Sea',
 }
 
 export enum PackageType {

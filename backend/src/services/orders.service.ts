@@ -2,7 +2,6 @@ import { PackagingFactory } from './packaging'
 import { PricingCalculator } from './pricing'
 
 import type { OrderRequest, OrderResponse } from '../models/order.model'
-import { ShippingMethod } from '../models/order.model'
 
 export class OrdersService {
   private packagingFactory: PackagingFactory
@@ -11,22 +10,6 @@ export class OrdersService {
   constructor() {
     this.packagingFactory = new PackagingFactory()
     this.pricingCalculator = new PricingCalculator()
-  }
-
-  normalizeShippingMethod(shippingMethod: string): {
-    isValid: boolean
-    method?: ShippingMethod
-  } {
-    const shippingMethodMap: Record<string, ShippingMethod> = {
-      land: ShippingMethod.LAND,
-      air: ShippingMethod.AIR,
-      sea: ShippingMethod.SEA,
-    }
-
-    const shippingMethodLower = shippingMethod.toLowerCase()
-    const method = shippingMethodMap[shippingMethodLower]
-
-    return method ? { isValid: true, method } : { isValid: false }
   }
 
   async processOrder(orderRequest: OrderRequest): Promise<OrderResponse> {
