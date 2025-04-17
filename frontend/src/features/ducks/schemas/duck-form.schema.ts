@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { DUCK_COLORS, DUCK_SIZES } from '@/constants/ducks'
+import { DUCK_COLORS, DUCK_SIZES } from '@/features/ducks/constants/ducks'
 
 export const duckFormSchema = z.object({
   color: z.enum(DUCK_COLORS, {

@@ -15,7 +15,11 @@ import {
 } from '@/components/ui/card'
 import { Form } from '@/components/ui/form'
 
-import { DUCK_COLOR_DETAILS, DUCK_COLORS, DUCK_SIZES } from '@/constants/ducks'
+import {
+  DUCK_COLOR_DETAILS,
+  DUCK_COLORS,
+  DUCK_SIZES,
+} from '@/features/ducks/constants/ducks'
 
 import {
   duckFormSchema,
