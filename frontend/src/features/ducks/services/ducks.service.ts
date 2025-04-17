@@ -3,12 +3,12 @@ import { api } from '@/services/api.service'
 import type { Duck } from '@/models/duck'
 import type { CreateDuckResponse } from '@/features/ducks/interfaces/create-duck-response'
 import type { EditDuckResponse } from '@/features/ducks/interfaces/edit-duck-response'
-import type { GetAllDucksResponse } from '@/features/ducks/interfaces/get-all-ducks-response'
+import type { GetDucksResponse } from '@/features/ducks/interfaces/get-all-ducks-response'
 import type { ServerResponse } from '@/features/ducks/interfaces/server-response'
 import type { CreateDuckDto, UpdateDuckDto } from '../types/duck'
 
-export const getAllDucks = async (): Promise<Duck[]> => {
-  const { data } = await api.get<GetAllDucksResponse>('/ducks')
+export const getDucks = async (): Promise<Duck[]> => {
+  const { data } = await api.get<GetDucksResponse>('/ducks')
   const { data: ducks } = data
   return ducks
 }

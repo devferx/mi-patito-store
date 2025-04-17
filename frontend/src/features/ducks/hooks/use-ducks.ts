@@ -1,11 +1,11 @@
 import { useQuery } from '@tanstack/react-query'
 
-import { getAllDucks } from '@/features/ducks/services/ducks.service'
+import { getDucks } from '@/features/ducks/services/ducks.service'
 
 export const useDucks = () => {
   const getDucksQuery = useQuery({
     queryKey: ['ducks'],
-    queryFn: getAllDucks,
+    queryFn: getDucks,
   })
 
   const totalDucks =
