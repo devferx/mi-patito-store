@@ -1,6 +1,9 @@
 import { DucksRepository } from '../repositories/ducks.repository'
 import { omitMetaFields } from '../utils/omit-meta-fields'
 
+import type { CreateDuckDto } from '../dtos/duck/create-duck.dto'
+import type { UpdateDuckDto } from '../dtos/duck/update-duck.dto'
+
 export class DucksService {
   constructor(private readonly ducksRepository: DucksRepository) {}
 
@@ -19,11 +22,7 @@ export class DucksService {
     return duck
   }
 
-  async createDuck(duck: any) {
-    if (!duck.color || !duck.size || !duck.price || !duck.quantity) {
-      throw new Error('El patito debe tener color, tamaño, precio y cantidad')
-    }
-
+  async createDuck(duck: CreateDuckDto) {
     const existingDuck = await this.ducksRepository.getDuckByAttributes(
       duck.color,
       duck.size,
@@ -47,8 +46,8 @@ export class DucksService {
     return omitMetaFields(createdDuck)
   }
 
-  async updateDuck(id: number, duck: any) {
-    const updateData: any = {}
+  async updateDuck(id: number, duck: UpdateDuckDto) {
+    const updateData: UpdateDuckDto = {}
 
     if (!!duck.quantity) updateData.quantity = duck.quantity
     if (!!duck.price) updateData.price = duck.price

@@ -2,6 +2,9 @@ import type { Request, Response } from 'express'
 
 import { DucksService } from '../services/ducks.service'
 
+import type { CreateDuckDto } from '../dtos/duck/create-duck.dto'
+import type { UpdateDuckDto } from '../dtos/duck/update-duck.dto'
+
 export class DucksController {
   constructor(private readonly ducksService: DucksService) {}
 
@@ -14,7 +17,7 @@ export class DucksController {
     })
   }
 
-  createDuck = async (req: Request, res: Response) => {
+  createDuck = async (req: Request<{}, {}, CreateDuckDto>, res: Response) => {
     const newDuck = req.body
 
     try {
@@ -40,7 +43,10 @@ export class DucksController {
     }
   }
 
-  updateDuck = async (req: Request, res: Response) => {
+  updateDuck = async (
+    req: Request<{ id: string }, {}, UpdateDuckDto>,
+    res: Response,
+  ) => {
     const { id } = req.params
     const duck = req.body
 

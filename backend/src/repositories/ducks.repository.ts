@@ -1,6 +1,8 @@
 import { orm } from '../lib/prisma'
 
-import { DuckColor, DuckSize } from '@prisma/client'
+import type { DuckColor, DuckSize } from '@prisma/client'
+import type { CreateDuckDto } from '../dtos/duck/create-duck.dto'
+import type { UpdateDuckDto } from '../dtos/duck/update-duck.dto'
 
 export class DucksRepository {
   async getAllDucks() {
@@ -46,7 +48,7 @@ export class DucksRepository {
     return duck
   }
 
-  async createDuck(duck: any) {
+  async createDuck(duck: CreateDuckDto) {
     const createdDuck = await orm.duck.create({
       data: {
         color: duck.color,
@@ -59,7 +61,7 @@ export class DucksRepository {
     return createdDuck
   }
 
-  async updateDuck(id: number, duck: any) {
+  async updateDuck(id: number, duck: UpdateDuckDto) {
     const updatedDuck = await orm.duck.update({
       where: {
         id,
