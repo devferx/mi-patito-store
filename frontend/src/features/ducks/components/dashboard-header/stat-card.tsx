@@ -1,13 +1,12 @@
-import { ReactNode } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
-interface StatCardProps {
+interface Props {
   title: string
-  value: ReactNode
   className?: string
+  children: React.ReactNode
 }
 
-export const StatCard = ({ title, value, className = '' }: StatCardProps) => {
+export const StatCard = ({ title, children, className = '' }: Props) => {
   return (
     <Card
       className={`duck-shadow transition-transform duration-200 hover:scale-105 ${className}`}
@@ -18,7 +17,7 @@ export const StatCard = ({ title, value, className = '' }: StatCardProps) => {
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="text-2xl font-bold">{value}</div>
+        <div className="text-2xl font-bold">{children}</div>
       </CardContent>
     </Card>
   )

@@ -5,7 +5,7 @@ import { useDucks } from '@ducks/hooks/use-ducks'
 
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { HomeHeader } from '@ducks/components/dashboard-header/home-header'
+import { DashboardHeader } from '@/features/ducks/components/dashboard-header/dashboard-header'
 import { DucksTable } from '@ducks/components/ducks-table/ducks-table'
 import { ducksTableColumns } from '@ducks/components/ducks-table/ducks-table-columns'
 
@@ -15,7 +15,7 @@ const HomePage = () => {
 
   return (
     <section className="wrapper">
-      <HomeHeader totalDucks={totalDucks} totalTypes={totalTypes} />
+      <DashboardHeader totalDucks={totalDucks} totalTypes={totalTypes} />
 
       <Card className="mx-auto mt-10 pb-0">
         <CardHeader className="pb-4">
