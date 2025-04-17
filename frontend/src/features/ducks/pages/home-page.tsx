@@ -1,10 +1,10 @@
 import { Plus } from 'lucide-react'
 import { Link } from 'react-router'
 
-import { useDucks } from '@/hooks/use-ducks'
+import { useDucks } from '@/features/ducks/hooks/use-ducks'
 
-import { DucksTable } from '@/components/ducks-table/ducks-table'
-import { ducksTableColumns } from '@/components/ducks-table/ducks-table-columns'
+import { DucksTable } from '@/features/ducks/components/ducks-table/ducks-table'
+import { ducksTableColumns } from '@/features/ducks/components/ducks-table/ducks-table-columns'
 import { HomeHeader } from '@/components/home-header'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'

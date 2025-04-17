@@ -1,10 +1,10 @@
 import { useParams } from 'react-router'
 
-import { useEditDuck } from '@/hooks/use-edit-duck'
+import { useEditDuck } from '@/features/ducks/hooks/use-edit-duck'
 
-import { DuckForm } from '@/components/duck-form'
+import { DuckForm } from '@/features/ducks/components/duck-form'
 
-import { DuckFormValues } from '@/schemas/duck-form.schema'
+import { DuckFormValues } from '@/features/ducks/schemas/duck-form.schema'
 
 export const EditDuckPage = () => {
   const { id } = useParams<{ id: string }>()

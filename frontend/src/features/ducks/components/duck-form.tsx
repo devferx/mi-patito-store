@@ -3,6 +3,8 @@ import { ChevronLeft } from 'lucide-react'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router'
 
+import { InputField } from '@/components/shared/input-field'
+import { SelectField } from '@/components/shared/select-field'
 import { Button } from '@/components/ui/button'
 import {
   Card,
@@ -12,12 +14,13 @@ import {
   CardTitle,
 } from '@/components/ui/card'
 import { Form } from '@/components/ui/form'
-import { InputField } from './input-field'
-import { SelectField } from './select-field'
 
 import { DUCK_COLOR_DETAILS, DUCK_COLORS, DUCK_SIZES } from '@/constants/ducks'
 
-import { duckFormSchema, type DuckFormValues } from '@/schemas/duck-form.schema'
+import {
+  duckFormSchema,
+  type DuckFormValues,
+} from '@/features/ducks/schemas/duck-form.schema'
 
 import type { Duck } from '@/models/duck'
 

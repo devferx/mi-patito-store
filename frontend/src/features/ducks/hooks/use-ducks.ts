@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 
-import { getAllDucks } from '@/services/ducks.service'
+import { getAllDucks } from '@/features/ducks/services/ducks.service'
 
 export const useDucks = () => {
   const getDucksQuery = useQuery({

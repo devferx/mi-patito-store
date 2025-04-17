@@ -1,4 +1,4 @@
-import { getDuckColorDetails } from '@/utils/get-duck-color-details'
+import { getDuckColorDetails } from '@/features/ducks/utils/get-duck-color-details'
 
 import type { DuckColor } from '@/constants/ducks'
 

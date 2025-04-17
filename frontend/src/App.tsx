@@ -5,12 +5,14 @@ import { Toaster } from 'sonner'
 
 import { queryClient } from './lib/react-query'
 
-import HomePage from './pages/home-page'
+import HomePage from './features/ducks/pages/home-page'
 
 import { MainLayout } from './components/main-layout'
 
-const CreateDuckPage = lazy(() => import('./pages/create-duck-page'))
-const EditDuckPage = lazy(() => import('./pages/edit-duck-page'))
+const CreateDuckPage = lazy(
+  () => import('./features/ducks/pages/create-duck-page'),
+)
+const EditDuckPage = lazy(() => import('./features/ducks/pages/edit-duck-page'))
 
 export const App = () => {
   return (
