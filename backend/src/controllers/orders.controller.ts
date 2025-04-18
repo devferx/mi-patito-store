@@ -23,7 +23,6 @@ export class OrdersController {
     const orderResponse = await this.ordersService.processOrder(orderRequest)
 
     res.status(201).json({
-      ok: true,
       message: 'Order processed successfully',
       data: orderResponse,
     })
