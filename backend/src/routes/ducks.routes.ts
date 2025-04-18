@@ -14,7 +14,7 @@ const ducksRepository = new DucksRepository()
 const ducksService = new DucksService(ducksRepository)
 const ducksController = new DucksController(ducksService)
 
-router.get('/', ducksController.getDucks.bind(ducksController))
+router.get('/', ducksController.getDucks)
 router.post('/', validateRequest(CreateDuckSchema), ducksController.createDuck)
 router.put(
   '/:id',
