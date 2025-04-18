@@ -9,16 +9,16 @@ import type { UpdateDuckDto } from '../dtos/duck/update-duck.dto'
 export class DucksService {
   constructor(private readonly ducksRepository: DucksRepository) {}
 
-  async getAllDucks() {
-    const ducks = await this.ducksRepository.getAllDucks()
+  async getDucks() {
+    const ducks = await this.ducksRepository.getDucks()
     return {
       message: 'Se obtuvieron todos los patitos',
       data: ducks,
     }
   }
 
-  private async getSingleDuck(id: number) {
-    const duck = await this.ducksRepository.getSingleDuck(id)
+  private async getDuckById(id: number) {
+    const duck = await this.ducksRepository.getDuckById(id)
 
     if (!duck) {
       throw Boom.notFound('Patito no encontrado')
@@ -64,7 +64,7 @@ export class DucksService {
     if (!!duck.quantity) updateData.quantity = duck.quantity
     if (!!duck.price) updateData.price = duck.price
 
-    await this.getSingleDuck(duckId)
+    await this.getDuckById(duckId)
     const updatedDuck = await this.ducksRepository.updateDuck(
       duckId,
       updateData,
@@ -77,7 +77,7 @@ export class DucksService {
   }
 
   async deleteDuck(id: number) {
-    await this.getSingleDuck(id)
+    await this.getDuckById(id)
     await this.ducksRepository.deleteDuck(id)
 
     return { message: `Patito eliminado con id ${id}` }

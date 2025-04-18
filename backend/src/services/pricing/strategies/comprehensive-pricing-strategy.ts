@@ -72,7 +72,7 @@ export class ComprehensivePricingStrategy implements PricingStrategy {
     color: DuckColor,
     size: DuckSize,
   ): Promise<any> {
-    const { data: ducks } = await ducksService.getAllDucks()
+    const { data: ducks } = await ducksService.getDucks()
     return ducks.find((duck) => duck.color === color && duck.size === size)
   }
 }

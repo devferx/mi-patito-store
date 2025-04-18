@@ -9,7 +9,7 @@ export class DucksController {
   constructor(private readonly ducksService: DucksService) {}
 
   getDucks = async (req: Request, res: Response) => {
-    const { message, data } = await this.ducksService.getAllDucks()
+    const { message, data } = await this.ducksService.getDucks()
     res.json({ message, data })
   }
 

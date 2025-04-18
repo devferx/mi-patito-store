@@ -5,7 +5,7 @@ import type { CreateDuckDto } from '../dtos/duck/create-duck.dto'
 import type { UpdateDuckDto } from '../dtos/duck/update-duck.dto'
 
 export class DucksRepository {
-  async getAllDucks() {
+  async getDucks() {
     const ducks = await orm.duck.findMany({
       select: {
         id: true,
@@ -25,7 +25,7 @@ export class DucksRepository {
     return ducks
   }
 
-  async getSingleDuck(id: number) {
+  async getDuckById(id: number) {
     const duck = await orm.duck.findFirst({
       where: {
         id,
