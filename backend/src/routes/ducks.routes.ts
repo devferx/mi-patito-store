@@ -6,7 +6,7 @@ import { DucksService } from '../services/ducks.service'
 
 import { CreateDuckSchema } from '../dtos/duck/create-duck.dto'
 import { UpdateDuckSchema } from '../dtos/duck/update-duck.dto'
-import { validateRequest } from '../middlewares/validate-request'
+import { validatorHandler } from '../middlewares/validator.handler'
 
 const router = Router()
 
@@ -15,10 +15,10 @@ const ducksService = new DucksService(ducksRepository)
 const ducksController = new DucksController(ducksService)
 
 router.get('/', ducksController.getDucks)
-router.post('/', validateRequest(CreateDuckSchema), ducksController.createDuck)
+router.post('/', validatorHandler(CreateDuckSchema), ducksController.createDuck)
 router.put(
   '/:id',
-  validateRequest(UpdateDuckSchema),
+  validatorHandler(UpdateDuckSchema),
   ducksController.updateDuck,
 )
 router.delete('/:id', ducksController.deleteDuck)
