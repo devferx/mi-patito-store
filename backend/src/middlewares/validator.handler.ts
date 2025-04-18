@@ -1,29 +1,24 @@
-import { Request, Response, NextFunction } from 'express'
+import Boom from '@hapi/boom'
+import { NextFunction, Request, Response } from 'express'
 import { AnyZodObject, ZodError } from 'zod'
 
 export const validatorHandler = (schema: AnyZodObject) => {
-  return async (req: Request, res: Response, next: NextFunction) => {
+  return async (req: Request, _res: Response, next: NextFunction) => {
     try {
       await schema.parseAsync(req.body)
       next()
-      return
     } catch (error) {
       if (error instanceof ZodError) {
-        res.status(400).json({
-          ok: false,
-          message: 'Datos de entrada inválidos',
-          errors: error.errors.map((err) => ({
-            path: err.path.join('.'),
-            message: err.message,
-          })),
-        })
+        const boomError = Boom.badRequest('Datos de entrada inválidos')
+        boomError.output.payload.errors = error.errors.map((err) => ({
+          path: err.path.join('.'),
+          message: err.message,
+        }))
+        next(boomError)
         return
       }
-      res.status(500).json({
-        ok: false,
-        message: 'Error interno del servidor',
-      })
-      return
+
+      next(Boom.internal('Error interno del servidor'))
     }
   }
 }
