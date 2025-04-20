@@ -97,6 +97,7 @@ export const DuckForm = ({
               name="color"
               label="Color"
               placeholder="Seleccionar color"
+              disabled={isEditing}
               options={colorsOptions}
             />
 
@@ -105,6 +106,7 @@ export const DuckForm = ({
               name="size"
               label="Tamaño"
               placeholder="Seleccionar tamaño"
+              disabled={isEditing}
               options={sizesOptions}
             />
 
