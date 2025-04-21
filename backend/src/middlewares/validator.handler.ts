@@ -9,7 +9,7 @@ export const validatorHandler = (schema: AnyZodObject) => {
       next()
     } catch (error) {
       if (error instanceof ZodError) {
-        const boomError = Boom.badRequest('Datos de entrada inválidos')
+        const boomError = Boom.badRequest('Invalid input data')
         boomError.output.payload.errors = error.errors.map((err) => ({
           path: err.path.join('.'),
           message: err.message,
@@ -18,7 +18,7 @@ export const validatorHandler = (schema: AnyZodObject) => {
         return
       }
 
-      next(Boom.internal('Error interno del servidor'))
+      next(Boom.internal('Internal server error'))
     }
   }
 }
