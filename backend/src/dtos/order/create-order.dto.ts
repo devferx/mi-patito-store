@@ -4,22 +4,22 @@ import { ShippingMethod } from '../../models/order.model'
 
 export const CreateOrderSchema = z.object({
   color: z.nativeEnum(DuckColor, {
-    required_error: 'El color del patito es requerido',
+    required_error: 'The duck color is required',
   }),
   size: z.nativeEnum(DuckSize, {
-    required_error: 'El tamaño del patito es requerido',
+    required_error: 'The duck size is required',
   }),
   quantity: z
     .number({
-      required_error: 'La cantidad es requerida',
+      required_error: 'The quantity is required',
     })
-    .int('La cantidad debe ser un número entero')
-    .positive('La cantidad debe ser positiva'),
+    .int('The quantity must be an integer')
+    .positive('The quantity must be positive'),
   destinationCountry: z.string({
-    required_error: 'El país de destino es requerido',
+    required_error: 'The destination country is required',
   }),
   shippingMethod: z.nativeEnum(ShippingMethod, {
-    required_error: 'El método de envío es requerido',
+    required_error: 'The shipping method is required',
   }),
 })
 
