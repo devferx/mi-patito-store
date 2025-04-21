@@ -13,9 +13,9 @@ export const DashboardHeader = ({ totalDucks = 0, totalTypes = 0 }: Props) => {
 
   return (
     <div className="grid gap-4 md:grid-cols-3">
-      <StatCard title="Total de Patitos en almacen">{totalDucks}</StatCard>
-      <StatCard title="Tipos de Patitos">{totalTypes}</StatCard>
-      <StatCard title="Colores Disponibles">
+      <StatCard title="Total Ducks in Stock">{totalDucks}</StatCard>
+      <StatCard title="Duck Types">{totalTypes}</StatCard>
+      <StatCard title="Available Colors">
         <div className="flex flex-wrap gap-2">
           {duckColorDetails.map(({ color, label }) => (
             <Badge

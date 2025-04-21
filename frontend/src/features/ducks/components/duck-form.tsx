@@ -83,7 +83,7 @@ export const DuckForm = ({
         </Button>
 
         <CardTitle className="text-xl">
-          {isEditing ? 'Editar patito' : 'Agregar nuevo patito'}
+          {isEditing ? 'Edit duck' : 'Add new duck'}
         </CardTitle>
       </CardHeader>
       <CardContent>
@@ -96,7 +96,7 @@ export const DuckForm = ({
               control={form.control}
               name="color"
               label="Color"
-              placeholder="Seleccionar color"
+              placeholder="Select color"
               disabled={isEditing}
               options={colorsOptions}
             />
@@ -104,8 +104,8 @@ export const DuckForm = ({
             <SelectField
               control={form.control}
               name="size"
-              label="Tamaño"
-              placeholder="Seleccionar tamaño"
+              label="Size"
+              placeholder="Select size"
               disabled={isEditing}
               options={sizesOptions}
             />
@@ -113,8 +113,8 @@ export const DuckForm = ({
             <InputField
               control={form.control}
               name="price"
-              label="Precio (USD)"
-              placeholder="Ejm.: 21.25"
+              label="Price (USD)"
+              placeholder="Ex.: 21.25"
               type="number"
               step={0.01}
             />
@@ -122,8 +122,8 @@ export const DuckForm = ({
             <InputField
               control={form.control}
               name="quantity"
-              label="Cantidad"
-              placeholder="Ejm.: 15"
+              label="Quantity"
+              placeholder="Ex.: 15"
               type="number"
             />
 
@@ -133,7 +133,7 @@ export const DuckForm = ({
                 type="submit"
                 disabled={isLoading}
               >
-                {isEditing ? 'Actualizar' : 'Agregar'}
+                {isEditing ? 'Update' : 'Add'}
               </Button>
             </CardFooter>
           </form>

@@ -22,12 +22,12 @@ export const ducksTableColumns: ColumnDef<Duck>[] = [
   },
   {
     accessorKey: 'size',
-    header: 'Tamaño',
+    header: 'Size',
     cell: ({ row }) => <Badge variant="outline">{row.original.size}</Badge>,
   },
   {
     accessorKey: 'price',
-    header: 'Precio',
+    header: 'Price',
     cell: ({ row }) => {
       const price = row.original.price
       return <span>{price} USD</span>
@@ -42,7 +42,7 @@ export const ducksTableColumns: ColumnDef<Duck>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
         >
-          Cantidad
+          Quantity
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       )
@@ -50,7 +50,7 @@ export const ducksTableColumns: ColumnDef<Duck>[] = [
   },
   {
     id: 'actions',
-    header: 'Acciones',
+    header: 'Actions',
     cell: ({ row }) => {
       const duck = row.original
 
@@ -58,7 +58,7 @@ export const ducksTableColumns: ColumnDef<Duck>[] = [
         <div>
           <Button variant="ghost" size="sm" className="h-8" asChild>
             <Link to={`/edit-duck/${duck.id}`}>
-              <Pencil className="mr-1 h-4 w-4" /> Editar
+              <Pencil className="mr-1 h-4 w-4" /> Edit
             </Link>
           </Button>
 

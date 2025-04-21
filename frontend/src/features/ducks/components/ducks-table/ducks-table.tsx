@@ -75,7 +75,7 @@ export const DucksTable = <TData, TValue>({
           ) : (
             <TableRow>
               <TableCell colSpan={columns.length} className="h-24 text-center">
-                No hay patitos disponibles
+                No ducks available
               </TableCell>
             </TableRow>
           )}

@@ -36,13 +36,13 @@ export const DeleteDuckAction = ({ duck }: DeleteDuckDialogProps) => {
           variant="ghost"
           size="sm"
         >
-          <Trash2 className="mr-1 h-4 w-4" /> Borrar
+          <Trash2 className="mr-1 h-4 w-4" /> Delete
         </Button>
       </AlertDialogTrigger>
 
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>¿Estás seguro?</AlertDialogTitle>
+          <AlertDialogTitle>Are you sure?</AlertDialogTitle>
           <AlertDialogDescription>
             <div className="bg-muted/30 mt-2 rounded-md border p-4">
               <div className="mb-2 flex items-center gap-2">
@@ -51,31 +51,31 @@ export const DeleteDuckAction = ({ duck }: DeleteDuckDialogProps) => {
                   style={{ backgroundColor: color }}
                 />
                 <span className="font-medium">
-                  Patito {label} {duck.size}
+                  {label} Duck {duck.size}
                 </span>
               </div>
               <div className="text-muted-foreground text-sm">
-                ID: {duck.id} | Cantidad: {duck.quantity.toLocaleString()} |
-                Precio: {duck.price} USD
+                ID: {duck.id} | Quantity: {duck.quantity.toLocaleString()} |
+                Price: {duck.price} USD
               </div>
             </div>
 
             <p className="mt-4">
-              Esta acción eliminará el patito del inventario. Esta acción no se
-              puede deshacer
+              This action will remove the duck from inventory. This action
+              cannot be undone
             </p>
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel className="cursor-pointer">
-            Cancelar
+            Cancel
           </AlertDialogCancel>
           <AlertDialogAction
             className="cursor-pointer bg-red-500 text-white hover:bg-red-600"
             onClick={() => handleDelete(duck.id.toString())}
             disabled={isDeleting}
           >
-            {isDeleting ? 'Eliminando...' : 'Eliminar'}
+            {isDeleting ? 'Deleting...' : 'Delete'}
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

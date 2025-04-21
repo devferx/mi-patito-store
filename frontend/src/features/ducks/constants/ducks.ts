@@ -14,10 +14,10 @@ export const DUCK_COLOR_DETAILS: Record<
   DuckColor,
   { label: string; color: string }
 > = {
-  Black: { label: 'Negro', color: '#171717' },
-  Yellow: { label: 'Amarillo', color: '#eab308' },
-  Green: { label: 'Verde', color: '#22c55e' },
-  Red: { label: 'Rojo', color: '#ef4444' },
+  Black: { label: 'Black', color: '#171717' },
+  Yellow: { label: 'Yellow', color: '#eab308' },
+  Green: { label: 'Green', color: '#22c55e' },
+  Red: { label: 'Red', color: '#ef4444' },
 }
 
 export const DUCK_SIZE_LABELS: Record<DuckSize, string> = {

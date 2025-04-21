@@ -20,14 +20,12 @@ const HomePage = () => {
       <Card className="mx-auto mt-10 pb-0">
         <CardHeader className="pb-4">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <CardTitle className="text-2xl font-bold">
-              Almacen de Patitos
-            </CardTitle>
+            <CardTitle className="text-2xl font-bold">Duck Storage</CardTitle>
             <div className="flex gap-1">
               <Button asChild>
                 <Link to="/create-duck">
                   <Plus className="mr-2 h-4 w-4" />
-                  Agregar Patito
+                  Add Duck
                 </Link>
               </Button>
             </div>

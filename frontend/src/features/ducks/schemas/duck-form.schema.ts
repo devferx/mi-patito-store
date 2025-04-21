@@ -3,20 +3,20 @@ import { DUCK_COLORS, DUCK_SIZES } from '@ducks/constants/ducks'
 
 export const duckFormSchema = z.object({
   color: z.enum(DUCK_COLORS, {
-    required_error: 'Por favor selecciona un color',
+    required_error: 'Please select a color',
   }),
   size: z.enum(DUCK_SIZES, {
-    required_error: 'Por favor selecciona un tamaño',
+    required_error: 'Please select a size',
   }),
   price: z.coerce
     .number()
-    .positive('El precio debe ser positivo')
-    .min(0.01, 'El precio mínimo es 0.01'),
+    .positive('Price must be positive')
+    .min(0.01, 'Minimum price is 0.01'),
   quantity: z.coerce
     .number()
-    .int('La cantidad debe ser un número entero')
-    .positive('La cantidad debe ser positiva')
-    .min(1, 'La cantidad mínima es 1'),
+    .int('Quantity must be an integer')
+    .positive('Quantity must be positive')
+    .min(1, 'Minimum quantity is 1'),
 })
 
 export type DuckFormValues = z.infer<typeof duckFormSchema>
