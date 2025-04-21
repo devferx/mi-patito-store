@@ -1,4 +1,5 @@
 import { DuckColor, DuckSize } from '@prisma/client'
+import Boom from '@hapi/boom'
 
 import { PackageType, ShippingMethod } from '../../../models/order.model'
 import { DucksRepository } from '../../../repositories/ducks.repository'
@@ -42,7 +43,7 @@ export class ComprehensivePricingStrategy implements PricingStrategy {
   ): Promise<PricingDetails> {
     const duck = await this.findDuckByAttributes(color, size)
     if (!duck) {
-      throw new Error('No se encontró el pato con los atributos especificados')
+      throw Boom.notFound('Duck with the specified attributes was not found')
     }
 
     const price = duck.price

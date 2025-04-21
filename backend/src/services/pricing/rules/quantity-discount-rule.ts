@@ -9,7 +9,7 @@ export class QuantityDiscountRule implements PricingRule {
     if (params.quantity > 100) {
       const discountAmount = params.baseCost * 0.2
       details.discounts.push({
-        name: 'Descuento por pedido grande (>100 unidades)',
+        name: 'Large order discount (>100 units)',
         amount: discountAmount,
       })
       details.totalCost -= discountAmount

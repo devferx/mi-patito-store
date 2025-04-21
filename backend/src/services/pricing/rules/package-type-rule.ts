@@ -10,7 +10,7 @@ export class PackageTypeRule implements PricingRule {
     if (params.packageType === PackageType.WOOD) {
       const increaseAmount = params.baseCost * 0.05
       details.increases.push({
-        name: 'Cargo por paquete de madera',
+        name: 'Charge for wooden package',
         amount: increaseAmount,
       })
       details.totalCost += increaseAmount
@@ -19,7 +19,7 @@ export class PackageTypeRule implements PricingRule {
     if (params.packageType === PackageType.PLASTIC) {
       const increaseAmount = params.baseCost * 0.1
       details.increases.push({
-        name: 'Cargo por paquete de plástico',
+        name: 'Charge for plastic package',
         amount: increaseAmount,
       })
       details.totalCost += increaseAmount
@@ -28,7 +28,7 @@ export class PackageTypeRule implements PricingRule {
     if (params.packageType === PackageType.CARDBOARD) {
       const discountAmount = params.baseCost * 0.01
       details.discounts.push({
-        name: 'Descuento por paquete de cartón',
+        name: 'Discount for cardboard package',
         amount: discountAmount,
       })
       details.totalCost -= discountAmount
