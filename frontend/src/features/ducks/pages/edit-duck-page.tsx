@@ -26,7 +26,7 @@ export const EditDuckPage = () => {
   if (!duck) {
     return (
       <section className="wrapper">
-        <h2 className="text-2xl">Cargando...</h2>
+        <h2 className="text-2xl">Loading...</h2>
       </section>
     )
   }
