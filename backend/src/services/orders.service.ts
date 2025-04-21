@@ -2,6 +2,7 @@ import { PackagingFactory } from './packaging'
 import { PricingCalculator } from './pricing'
 
 import type { OrderRequest, OrderResponse } from '../models/order.model'
+import type { CreateOrderDto } from '../dtos/order/create-order.dto'
 
 export class OrdersService {
   private packagingFactory: PackagingFactory
@@ -10,6 +11,26 @@ export class OrdersService {
   constructor() {
     this.packagingFactory = new PackagingFactory()
     this.pricingCalculator = new PricingCalculator()
+  }
+
+  async createOrder(orderDto: CreateOrderDto) {
+    const { color, size, quantity, destinationCountry, shippingMethod } =
+      orderDto
+
+    const orderRequest: OrderRequest = {
+      color,
+      size,
+      quantity: Number(quantity),
+      destinationCountry,
+      shippingMethod,
+    }
+
+    const orderResponse = await this.processOrder(orderRequest)
+
+    return {
+      message: 'Order processed successfully',
+      data: orderResponse,
+    }
   }
 
   async processOrder(orderRequest: OrderRequest): Promise<OrderResponse> {
