@@ -7,16 +7,16 @@ export enum ShippingMethod {
 }
 
 export enum PackageType {
-  WOOD = 'Madera',
-  CARDBOARD = 'Cartón',
-  PLASTIC = 'Plástico',
+  WOOD = 'Wood',
+  CARDBOARD = 'Cardboard',
+  PLASTIC = 'Plastic',
 }
 
 export enum ProtectionType {
-  STYROFOAM = 'Bolitas de plastoformo',
-  BUBBLE_WRAP = 'Bolsas con burbuja',
-  MOISTURE_ABSORBING = 'Bolitas absorbentes de humedad',
-  COMBINED = 'Bolitas absorbentes de humedad y bolsas con burbuja',
+  STYROFOAM = 'Styrofoam balls',
+  BUBBLE_WRAP = 'Bubble wrap bags',
+  MOISTURE_ABSORBING = 'Moisture-absorbing balls',
+  COMBINED = 'Moisture-absorbing balls and bubble wrap bags',
 }
 
 export interface OrderRequest {
