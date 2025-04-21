@@ -12,7 +12,7 @@ export class DucksService {
   async getDucks() {
     const ducks = await this.ducksRepository.getDucks()
     return {
-      message: 'Se obtuvieron todos los patitos',
+      message: 'All ducks successfully retrieved',
       data: ducks,
     }
   }
@@ -21,7 +21,7 @@ export class DucksService {
     const duck = await this.ducksRepository.getDuckById(id)
 
     if (!duck) {
-      throw Boom.notFound('Patito no encontrado')
+      throw Boom.notFound('Duck not found')
     }
 
     return duck
@@ -44,7 +44,7 @@ export class DucksService {
       )
 
       return {
-        message: 'El patito ya existe, la cantidad fue actualizada',
+        message: 'Duck already exists, quantity has been updated',
         data: omitMetaFields(updatedDuck),
       }
     }
@@ -52,7 +52,7 @@ export class DucksService {
     // If duck doesn't exist, create a new one
     const createdDuck = await this.ducksRepository.createDuck(duck)
     return {
-      message: 'Nuevo patito creado',
+      message: 'New duck created',
       data: omitMetaFields(createdDuck),
     }
   }
@@ -71,7 +71,7 @@ export class DucksService {
     )
 
     return {
-      message: `Patito ${id} actualizado`,
+      message: `Duck with id: ${id}, was updated`,
       data: omitMetaFields(updatedDuck),
     }
   }
@@ -80,6 +80,6 @@ export class DucksService {
     await this.getDuckById(id)
     await this.ducksRepository.deleteDuck(id)
 
-    return { message: `Patito eliminado con id ${id}` }
+    return { message: `Duck with id: ${id}, was deleted` }
   }
 }
